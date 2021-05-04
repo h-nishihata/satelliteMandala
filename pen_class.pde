@@ -9,10 +9,21 @@ public class Pen{
           float R1, R2, R3;
           float Rot1, Rot2;
           
+          int mainAngle;
+          
+          int angleUnit;
+          
+          Pen child;
+          
+          boolean isAlive;
+          
+          int waitCnt;
+          int step;
+          
 //          float vx,vy;
     
 
-Pen(float r, float cx, float cy, float rot1, float rot2){
+Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
 //construct
           Cx = cx;
           Cy = cy;
@@ -22,6 +33,16 @@ Pen(float r, float cx, float cy, float rot1, float rot2){
           R3 = r/10;
           Rot1 = rot1;
           Rot2 = rot2;
+          angleUnit = au;
+          isAlive = false;
+          waitCnt = wc;
+          step = 0;
+          
+          
+}
+
+void beBorn(){
+  isAlive = true;
 }
 
 //void reset( float r ){
@@ -35,12 +56,22 @@ void draw(){
           noStroke();
           noFill();
           ellipse(Cx,Cy,R1,R1);
+          
+//          if(child.Cx!=0) child.draw();
 }
  
 void render(){
+  
+ 
+  if(step<waitCnt){
+     step++;
+  }else{
+  
   noStroke();
           fill(60,30,30,10);
           strokeWeight(2);
+          
+          
           
 for(int j=0; j<3; j++){
 
@@ -48,25 +79,47 @@ for(int j=0; j<3; j++){
           Ang1 += Rot1;
           float rx = Cx + (R1 * cos(radians(Ang1)) );
           float ry = Cy + (R1 * sin(radians(Ang1)) );
-         
-                if(Ang1 <= 360)
-                ellipse(rx,ry,R2,R2);
           
           
-          Ang2 += Rot2;
+          
+          int temp = (int)(Ang1)/angleUnit;
+          
+          if(temp!=mainAngle) {
+                if(Ang1 <= 360){
+                  ellipse(rx,ry,R2,R2);
+                }else{
+                  
+                 
+                  
+                  if(isAlive==true){
+                    //child = new Pen( 10,X,Y,1,1,20  );
+                    //child.beBorn();
+                     isAlive = false;
+                  }
+                }
+          }
+                
+            mainAngle = temp;
+            
+            if(isAlive==false){
+               //child.render();
+            }
+          
+          
+//          Ang2 += Rot2;
           X = rx + (R2*cos(radians(Ang2)));
           Y = ry + (R2*sin(radians(Ang2)));
-          
-                if(Ang2 <= 360)
-                ellipse(X,Y,R3,R3);
-  
-           if(Ang2 >=360 && R1 < 1000){
-             Ang2 = 0;
-             Rot1 /= 1.5;
-             R1 += 50;
-            this.draw();
-            this.render();
-            }
+//          
+//                if(Ang2 <= 360)
+//                ellipse(X,Y,R3,R3);
+//  
+//           if(Ang2 >=360 && R1 < 1000){
+//             Ang2 = 0;
+//             Rot1 /= 1.5;
+//             R1 += 50;
+//            this.draw();
+//            this.render();
+//            }
 
 }
 
@@ -85,5 +138,5 @@ for(int j=0; j<3; j++){
 
 
 }
-
+}
 }
