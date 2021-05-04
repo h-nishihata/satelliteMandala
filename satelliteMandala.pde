@@ -1,9 +1,13 @@
-//DIGITAL MANDALA _ v008
+//DIGITAL MANDALA _ v009
 
 
 //dimensions
 int num = 100;
 Pen[] pens;
+int numpal = 0;
+int maxpal = 100;
+
+color[] goodcolor = new color[num];
 
 //MAIN
 //------------------------------------------------------------------------------------------------------------------
@@ -14,7 +18,7 @@ void setup(){
           colorMode(RGB,100);
           
           background(150,100,80);
-//        takecolor("sat_data.jpg");
+          takecolor("sat_data.jpg");
           frameRate(100);
           smooth();
           noStroke();

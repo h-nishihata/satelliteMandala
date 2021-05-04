@@ -15,8 +15,10 @@ public class Pen{
           int waitCnt;
           int step;
           
-          int num_eraser = 1;
-          Eraser[] erasers = new Eraser[num_eraser];          
+          color c = somecolor();
+          
+//          int num_eraser = 1;
+//          Eraser[] erasers = new Eraser[num_eraser];          
 
 Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
   
@@ -33,9 +35,9 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           waitCnt = wc;
           step = 0;
           
-          for (int n=0; n<num_eraser; n++) {
-                erasers[n] = new Eraser();
-          }
+//          for (int n=0; n<num_eraser; n++) {
+//                erasers[n] = new Eraser();
+//          }
               
 }
 
@@ -54,9 +56,10 @@ void render(){
           if(step < waitCnt){
              step++;
           }else{
-//
-//          noFill();
-//          noStroke();
+
+                  noFill();
+                  strokeWeight(random(1,5));
+                  stroke(red(c),green(c),blue(c),20);
 
 
   
@@ -68,8 +71,6 @@ void render(){
           
           if(temp != mainAngle) {
                 if(Ang1 <= 360){
-                  fill(random(60,200),random(30,50),random(0,30),10);
-
                   ellipse(rx,ry,R2,R2);
                 }
           }
@@ -86,7 +87,6 @@ void render(){
           
           
                 if(Ang1 >= 360 && Ang2 <= 360){
-                   fill(random(60,200),random(30,50),random(0,30),10);
 
                    ellipse(X,Y,R3,R3);
                 }
@@ -100,9 +100,9 @@ void render(){
             this.render();
             }
 
-            for (int s=0; s<num_eraser; s++) {
-                  erasers[s].render();
-          }
+//            for (int s=0; s<num_eraser; s++) {
+//                  erasers[s].render();
+//          }
          }
 }
 //------------------------------------------------------------------------------------------------------------------
