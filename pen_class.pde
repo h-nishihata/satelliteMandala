@@ -11,7 +11,6 @@ public class Pen{
           float Rot1, Rot2;
           
           int mainAngle;
-          int mainAngle_2;
           int angleUnit;
           int waitCnt;
           int step;
@@ -49,8 +48,9 @@ void render(){
           if(step < waitCnt){
              step++;
           }else{
-
-          
+//
+//          noFill();
+//          noStroke();
 
 
   
@@ -63,6 +63,7 @@ void render(){
           if(temp != mainAngle) {
                 if(Ang1 <= 360){
                   fill(random(60,200),random(30,50),random(0,30),10);
+
                   ellipse(rx,ry,R2,R2);
                 }
           }
@@ -80,6 +81,7 @@ void render(){
           
                 if(Ang1 >= 360 && Ang2 <= 360){
                    fill(random(60,200),random(30,50),random(0,30),10);
+
                    ellipse(X,Y,R3,R3);
                 }
   
@@ -91,15 +93,16 @@ void render(){
             this.draw();
             this.render();
             }
-            
-
-
-
-
-         
-
-
-
+//          stroke(random(60,200),random(30,50),random(0,30),10);  
+//          strokeWeight(1);
+//          line(Cx,Cy,rx,ry);
           }
      }
+//------------------------------------------------------------------------------------------------------------------
+void move(){
+  float vx = random(-1.2, 1.2);
+  float vy = random(-0.5, 0.5);
+              Cx+=vx;
+              Cy+=vy;
+}
 }

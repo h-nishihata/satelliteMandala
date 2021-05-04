@@ -1,4 +1,4 @@
-//DIGITAL MANDALA _ v006
+//DIGITAL MANDALA _ v007
 
 //dimensions
 int num = 100;
@@ -14,7 +14,7 @@ void setup(){
           background(150,100,80);
           frameRate(100);
           smooth();
-          noFill();
+          noStroke();
           
           pens = new Pen[num];
           
@@ -35,8 +35,8 @@ void setup(){
 void draw(){
   
           for(int j=0; j<num; j++){
-                pens[j].draw();
                 pens[j].render();
+                pens[j].move();
           }
           
 }
