@@ -8,8 +8,9 @@ import ddf.minim.*;
 
 Minim minim;
 AudioSample[] sample;
-AudioPlayer audio;
 int numsound = 3;
+
+FullScreen fs;
 
 GoogleMapper gMapper;
 PImage b;
@@ -32,6 +33,8 @@ void setup(){
           colorMode(RGB,100);
           frameRate(18);
           smooth();
+          fs = new FullScreen(this); 
+          fs.enter();
           
 //  getting image   
           double mapCenterLat = random(10.000000,90.000000);
@@ -43,22 +46,18 @@ void setup(){
           
                 gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
                 b = gMapper.getMap();
-                
                 tint(150,150,0,50);
                 image(b,0,0,width,height);
-                
                 b.loadPixels();
                 
           takecolor();
           
 //  sounds         
           minim = new Minim(this);
-           audio = minim.loadFile("background.mp3");
           sample = new AudioSample[numsound];
-          sample[0] = minim.loadSample("b_006.mp3");
+          sample[0] = minim.loadSample("b_070.mp3");
           sample[1] = minim.loadSample("b_040.mp3");
-          sample[2] = minim.loadSample("b_070.mp3");
-          audio.loop();
+          sample[2] = minim.loadSample("b_006.mp3");
           
 //  arrange linearly          
           pens = new Pen[num];
@@ -77,9 +76,7 @@ void setup(){
 
 //------------------------------------------------------------------------------------------------------------------
 void draw(){
-//  move pens 
-//audio.play();
-
+//  move pens  
           for(int j=0; j<num; j++){
                 pens[j].render();
                 pens[j].move();
@@ -89,7 +86,6 @@ void draw(){
 //------------------------------------------------------------------------------------------------------------------
 void stop(){
           for(int i=0; i<numsound; i++){
-            audio.close();
                   sample[i].close();
                   minim.stop();
                   super.stop();
