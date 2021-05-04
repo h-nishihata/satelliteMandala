@@ -51,8 +51,25 @@ void draw(){
           noFill();
           ellipse(Cx,Cy,R1,R1);
           
+          //重なり判定メソッド
+          boolean touching = false;
+          for(int t=0; t<num; t++){
+                Pen otherPen = pens[t];
+                if(otherPen != this){
+                      float dis = dist(Cx,Cy,otherPen.Cx,otherPen.Cy);
+                      if((dis - R1 - otherPen.R1) < 0){
+                         touching = true;
+                         break;
+                      }
+                }
+          }
+          if(touching){
+              for(int i=0; i<numsound; i++){ 
+                      sample[int(random(numsound))].trigger();
+              }
+          
 }
-
+}
 //------------------------------------------------------------------------------------------------------------------ 
  
 void render(){
@@ -62,8 +79,8 @@ void render(){
           }else{
 
                   noFill();
-                  strokeWeight(random(1,5));
-                  stroke(red(c),green(c),blue(c),20);
+                  strokeWeight(random(1,3));
+                  stroke(red(c),green(c),blue(c),50);
 
 
   
@@ -99,7 +116,7 @@ void render(){
              Ang1 = 0;
              Ang2 = 0;
 //             Rot1 /= 1.5;
-             R1 += 20;
+             R1 += 50;
             this.draw();
             this.render();
             }
