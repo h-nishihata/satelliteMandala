@@ -2,6 +2,7 @@
 //OBJECTS
 //------------------------------------------------------------------------------------------------------------------
 public class Pen{
+  
           float Cx, Cy;
           float Rx,Ry;
           float X,Y;
@@ -10,20 +11,15 @@ public class Pen{
           float Rot1, Rot2;
           
           int mainAngle;
-          
           int angleUnit;
-          
-          Pen child;
-          
+//          Pen child;
           boolean isAlive;
-          
           int waitCnt;
           int step;
           
-//          float vx,vy;
-    
 
 Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
+  
 //construct
           Cx = cx;
           Cy = cy;
@@ -38,39 +34,35 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           waitCnt = wc;
           step = 0;
           
+}
+
+
+void beBorn(){
+  
+          isAlive = true;
           
 }
 
-void beBorn(){
-  isAlive = true;
-}
-
-//void reset( float r ){
-//          Ang1 = Ang2 =0;
-//          R1 = r;
-//          R2 = r/2;
-//          R3 = r/10;
-//}
 
 void draw(){
+  
           noStroke();
           noFill();
           ellipse(Cx,Cy,R1,R1);
           
-//          if(child.Cx!=0) child.draw();
 }
+ 
  
 void render(){
   
- 
-  if(step<waitCnt){
-     step++;
-  }else{
-  
-  noStroke();
-          fill(60,30,30,10);
-          strokeWeight(2);
+          if(step<waitCnt){
+             step++;
+          }else{
           
+          noStroke();
+          fill(60,30,30,10);
+                  
+                  
           
           
 for(int j=0; j<3; j++){
@@ -80,23 +72,20 @@ for(int j=0; j<3; j++){
           float rx = Cx + (R1 * cos(radians(Ang1)) );
           float ry = Cy + (R1 * sin(radians(Ang1)) );
           
-          
-          
           int temp = (int)(Ang1)/angleUnit;
           
-          if(temp!=mainAngle) {
+          if(temp != mainAngle) {
                 if(Ang1 <= 360){
-                  ellipse(rx,ry,R2,R2);
+                      ellipse(rx,ry,R2,R2);
                 }else{
                   
-                 
                   
-                  if(isAlive==true){
+                if(isAlive==true){
                     //child = new Pen( 10,X,Y,1,1,20  );
                     //child.beBorn();
                      isAlive = false;
                   }
-                }
+              }
           }
                 
             mainAngle = temp;
@@ -121,22 +110,13 @@ for(int j=0; j<3; j++){
 //            this.render();
 //            }
 
-}
-
-//
-//          
-          
-//          
-//          line( );
-          
-//}
-//void move(){
-//Cx += vx;
-//Cy += vy;
-//
-//vx +=5;
 
 
-}
-}
+          }
+         
+
+
+
+          }
+     }
 }
