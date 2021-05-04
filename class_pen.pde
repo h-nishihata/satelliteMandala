@@ -51,7 +51,6 @@ void draw(){
           noFill();
           ellipse(Cx,Cy,R1,R1);
           
-          //重なり判定メソッド
           boolean touching = false;
           for(int t=0; t<num; t++){
                 Pen otherPen = pens[t];

@@ -1,4 +1,4 @@
-//DIGITAL MANDALA _ v010
+//DIGITAL MANDALA _ v012
 
 
 //dimensions
@@ -27,7 +27,7 @@ void setup(){
           
           background(150,100,80);
           takecolor("sat_data.jpg");
-          frameRate(15);
+          frameRate(30);
           smooth();
           noStroke();
           
