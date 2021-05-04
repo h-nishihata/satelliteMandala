@@ -1,4 +1,4 @@
-//  Digital Mandala _ v013, {Software} Structures
+//  Digital Mandala _ v014, {Software} Structures
 //  h.nishihata   June,2013
 //  wwww.nishihatahitoshi.com
 //  Built with Processing 2.0 b9
@@ -8,6 +8,7 @@ import ddf.minim.*;
 
 Minim minim;
 AudioSample[] sample;
+AudioPlayer audio;
 int numsound = 3;
 
 GoogleMapper gMapper;
@@ -42,18 +43,22 @@ void setup(){
           
                 gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
                 b = gMapper.getMap();
+                
                 tint(150,150,0,50);
                 image(b,0,0,width,height);
+                
                 b.loadPixels();
                 
           takecolor();
           
 //  sounds         
           minim = new Minim(this);
+           audio = minim.loadFile("background.mp3");
           sample = new AudioSample[numsound];
-          sample[0] = minim.loadSample("test.mp3");
-          sample[1] = minim.loadSample("test.mp3");
-          sample[2] = minim.loadSample("test.mp3");
+          sample[0] = minim.loadSample("b_006.mp3");
+          sample[1] = minim.loadSample("b_040.mp3");
+          sample[2] = minim.loadSample("b_070.mp3");
+          audio.loop();
           
 //  arrange linearly          
           pens = new Pen[num];
@@ -72,7 +77,9 @@ void setup(){
 
 //------------------------------------------------------------------------------------------------------------------
 void draw(){
-//  move pens  
+//  move pens 
+//audio.play();
+
           for(int j=0; j<num; j++){
                 pens[j].render();
                 pens[j].move();
@@ -82,6 +89,7 @@ void draw(){
 //------------------------------------------------------------------------------------------------------------------
 void stop(){
           for(int i=0; i<numsound; i++){
+            audio.close();
                   sample[i].close();
                   minim.stop();
                   super.stop();
