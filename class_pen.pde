@@ -1,5 +1,5 @@
 
-//OBJECTS
+//  OBJECTS
 //------------------------------------------------------------------------------------------------------------------
 public class Pen{
   
@@ -17,6 +17,8 @@ public class Pen{
           
           color c = somecolor();
           
+          
+//  erasers
 //          int num_eraser = 1;
 //          Eraser[] erasers = new Eraser[num_eraser];          
 
@@ -24,7 +26,7 @@ public class Pen{
 
 Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
   
-//construct
+//  construct
           Cx = cx;
           Cy = cy;
           Ang1 = Ang2 =0;
@@ -36,7 +38,8 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           angleUnit = au;
           waitCnt = wc;
           step = 0;
-          
+
+//  create erasers          
 //          for (int n=0; n<num_eraser; n++) {
 //                erasers[n] = new Eraser();
 //          }
@@ -78,8 +81,8 @@ void render(){
           }else{
 
                   noFill();
-                  strokeWeight(random(1,3));
-                  stroke(red(c),green(c),blue(c),50);
+                  strokeWeight(random(1,5));
+                  stroke(red(c),green(c),blue(c),30);
 
 
   
@@ -119,6 +122,7 @@ void render(){
             this.draw();
             this.render();
             }
+            
 
 //            for (int s=0; s<num_eraser; s++) {
 //                  erasers[s].render();
@@ -127,10 +131,12 @@ void render(){
 }
 //------------------------------------------------------------------------------------------------------------------
 void move(){
-  float vx = random(-1.2, 1.2);
-  float vy = random(-0.5, 0.5);
-              Cx+=vx;
-              Cy+=vy;
+//  add velocity to position
+          float vx = random(-1.2, 1.2);
+          float vy = random(-0.5, 0.5);
+          
+          Cx+=vx;
+          Cy+=vy;
 }
 
 }

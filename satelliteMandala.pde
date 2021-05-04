@@ -1,12 +1,17 @@
-//DIGITAL MANDALA _ v012
+//  Digital Mandala _ v013, {Software} Structures
+//  h.nishihata   June,2013
+//  wwww.nishihatahitoshi.com
+//  Built with Processing 2.0 b9
 
-
-//dimensions
+//  dimensions
 import ddf.minim.*;
 
 Minim minim;
 AudioSample[] sample;
 int numsound = 3;
+
+GoogleMapper gMapper;
+PImage b;
 
 int num = 100;
 Pen[] pens;
@@ -17,29 +22,41 @@ int numpal = 0;
 color[] goodcolor = new color[maxpal];
 
 
-//MAIN
+//  MAIN
 //------------------------------------------------------------------------------------------------------------------
 void setup(){
 
           size(1000,1000,P3D);
           ellipseMode(RADIUS);
           colorMode(RGB,100);
-          
-          background(150,100,80);
-          takecolor("sat_data.jpg");
-          frameRate(30);
+          frameRate(18);
           smooth();
-          noStroke();
           
+//  getting image   
+          double mapCenterLat = random(10.000000,90.000000);
+          double mapCenterLon = random(10.000000,90.000000);
+          int    zoomLevel = 10;
+          String mapType = GoogleMapper.MAPTYPE_SATELLITE;
+          int    mapWidth = width;   
+          int    mapHeight = height;
+          
+                gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
+                b = gMapper.getMap();
+                tint(150,150,0,50);
+                image(b,0,0,width,height);
+                b.loadPixels();
+                
+          takecolor();
+          
+//  sounds         
           minim = new Minim(this);
           sample = new AudioSample[numsound];
           sample[0] = minim.loadSample("test.mp3");
           sample[1] = minim.loadSample("test.mp3");
           sample[2] = minim.loadSample("test.mp3");
           
-          
+//  arrange linearly          
           pens = new Pen[num];
-          
           for(int i=0; i<num; i++){
             
                 float r = random(10,30);
@@ -55,20 +72,19 @@ void setup(){
 
 //------------------------------------------------------------------------------------------------------------------
 void draw(){
-  
+//  move pens  
           for(int j=0; j<num; j++){
                 pens[j].render();
                 pens[j].move();
           }
-          
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void stop(){
-  for(int i=0; i<numsound; i++){
-          sample[i].close();
-          minim.stop();
-          super.stop();
-  }
+          for(int i=0; i<numsound; i++){
+                  sample[i].close();
+                  minim.stop();
+                  super.stop();
+          }
 }
 

@@ -1,17 +1,15 @@
 class Eraser{
-           float centerX, centerY;
-           float radius;
+//           float centerX, centerY;
+//           float radius;
            //  float rad_2;
            //  float angle;
            //  float rotate;
             
 Eraser(){
           //construct
-          centerX = random(width);
-          centerY = random(height);
-          radius = random(10,30);
+                
           
-//          color col = retrieve();
+          //color col = retrieve();
           //  angle = 0;
           //  rotate = 20;
           //  rad_2 = random(radius/5,radius/2);
@@ -20,6 +18,17 @@ Eraser(){
 
 
 void render(){
+          loadPixels();
+        
+          int x = int(random(b.width));
+          int y = int(random(b.height));
+
+          int pos = (y * b.height) + x;
+          pixels[pos] = b.pixels[pos];
+          updatePixels();
+//              fill(red(c),green(c),blue(c));
+//              ellipse(x,y,10,10);
+              
 //            noStroke();
 //            
 //            fill(red(col),green(col),blue(col),30);
@@ -29,7 +38,7 @@ void render(){
 //            float vy = random(-2, 2);
 //            centerX += vx;
 //            centerY += vy;
-//          angle += rotate;
+//            angle += rotate;
 //          float rx = centerX + (radius * cos(radians(angle)) );
 //          float ry = centerY + (radius * sin(radians(angle)) );
 //          
