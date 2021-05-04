@@ -20,6 +20,8 @@ public class Pen{
 //          int num_eraser = 1;
 //          Eraser[] erasers = new Eraser[num_eraser];          
 
+//------------------------------------------------------------------------------------------------------------------
+
 Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
   
 //construct
@@ -41,6 +43,7 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
               
 }
 
+//------------------------------------------------------------------------------------------------------------------
 
 void draw(){
   
@@ -49,7 +52,8 @@ void draw(){
           ellipse(Cx,Cy,R1,R1);
           
 }
- 
+
+//------------------------------------------------------------------------------------------------------------------ 
  
 void render(){
   
