@@ -1,7 +1,7 @@
-//DIGITAL MANDALA _ v005
+//DIGITAL MANDALA _ v006
 
 //dimensions
-int num = 10;
+int num = 100;
 Pen[] pens;
 
 //MAIN
@@ -12,7 +12,7 @@ void setup(){
           ellipseMode(RADIUS);
           colorMode(RGB,100);
           background(150,100,80);
-          frameRate(40);
+          frameRate(100);
           smooth();
           noFill();
           
@@ -25,10 +25,9 @@ void setup(){
                 float cy = random(height);
                 float rot1 = random(1,30);
                 float rot2 = 0.8;
-                int au = 20;
+                int au = 5;
                 
-                pens[i] = new Pen( r,cx,cy,rot1,rot2,au, (int)(random(1,300)) );
-                pens[i].beBorn();
+                pens[i] = new Pen( r,cx,cy,rot1,rot2,au, (int)(random(1,500)) );
           }
 }
 
