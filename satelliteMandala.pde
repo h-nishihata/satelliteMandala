@@ -1,4 +1,4 @@
-//DIGITAL MANDALA _ v002
+//DIGITAL MANDALA _ v003
 
 //dimensions
 int num = 10;
@@ -10,8 +10,8 @@ void setup(){
           size(1000,1000,P3D);
           ellipseMode(RADIUS);
           colorMode(RGB,100);
-          background(150,100,80,10);
-          frameRate(15);
+          background(150,100,80);
+          frameRate(40);
           smooth();
           noFill();
           
@@ -19,7 +19,7 @@ void setup(){
           
           for(int i=0; i<num; i++){
             
-                float r = random(10,100);
+                float r = random(10,30);
                 float cx =  random(width);
                 float cy = random(height);
                 float rot1 = 20;
