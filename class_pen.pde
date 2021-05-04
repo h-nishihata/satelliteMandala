@@ -15,16 +15,13 @@ public class Pen{
           int waitCnt;
           int step;
           
-          color c = somecolor();
-          
+          color C;
+          int a;
           
 //  erasers
-//          int num_eraser = 1;
-//          Eraser[] erasers = new Eraser[num_eraser];          
-
 //------------------------------------------------------------------------------------------------------------------
 
-Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
+Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc, color c){
   
 //  construct
           Cx = cx;
@@ -38,11 +35,10 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           angleUnit = au;
           waitCnt = wc;
           step = 0;
-
+          C = c;
+          a = 0;
 //  create erasers          
-//          for (int n=0; n<num_eraser; n++) {
-//                erasers[n] = new Eraser();
-//          }
+
               
 }
 
@@ -82,7 +78,12 @@ void render(){
 
                   noFill();
                   strokeWeight(random(1,5));
-                  stroke(red(c),green(c),blue(c),30);
+                 a = 100;
+               
+       
+                  if(a >= 0){
+                  stroke(red(C),green(C),blue(C),a--);
+                  }
 
 
   
@@ -123,10 +124,15 @@ void render(){
             this.render();
             }
             
+            if(R1 >= 1000){
+            Ang1 = 0;
+            Ang2 = 0;
+R1 = random(10,30);
+                  this.draw();
+            this.render();
+            }
 
-//            for (int s=0; s<num_eraser; s++) {
-//                  erasers[s].render();
-//          }
+           
          }
 }
 //------------------------------------------------------------------------------------------------------------------

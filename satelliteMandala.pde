@@ -1,4 +1,4 @@
-//  Digital Mandala _ v014, {Software} Structures
+//  Digital Mandala _ v016, {Software} Structures
 //  h.nishihata   June,2013
 //  wwww.nishihatahitoshi.com
 //  Built with Processing 2.0 b9
@@ -10,13 +10,16 @@ Minim minim;
 AudioSample[] sample;
 int numsound = 3;
 
-FullScreen fs;
-
 GoogleMapper gMapper;
 PImage b;
 
 int num = 100;
 Pen[] pens;
+
+
+          int num_eraser = 1;
+          Eraser[] erasers;          
+
 
 int maxpal = 100;
 int numpal = 0;
@@ -31,10 +34,8 @@ void setup(){
           size(1000,1000,P3D);
           ellipseMode(RADIUS);
           colorMode(RGB,100);
-          frameRate(18);
+          frameRate(30);
           smooth();
-          fs = new FullScreen(this); 
-          fs.enter();
           
 //  getting image   
           double mapCenterLat = random(10.000000,90.000000);
@@ -45,8 +46,10 @@ void setup(){
           int    mapHeight = height;
           
                 gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
-                b = gMapper.getMap();
+//                b = gMapper.getMap();\
                 tint(150,150,0,50);
+b = loadImage("sat_data.jpg");
+
                 image(b,0,0,width,height);
                 b.loadPixels();
                 
@@ -58,6 +61,8 @@ void setup(){
           sample[0] = minim.loadSample("b_070.mp3");
           sample[1] = minim.loadSample("b_040.mp3");
           sample[2] = minim.loadSample("b_006.mp3");
+
+
           
 //  arrange linearly          
           pens = new Pen[num];
@@ -69,9 +74,16 @@ void setup(){
                 float rot1 = random(1,30);
                 float rot2 = 0.8;
                 int au = 5;
+                int wc = (int)(random(1,500));
+                color c = somecolor();
                 
-                pens[i] = new Pen( r,cx,cy,rot1,rot2,au, (int)(random(1,500)) );
+                pens[i] = new Pen( r,cx,cy,rot1,rot2,au,wc,c  );
           }
+          
+//          erasers = new Eraser[num_eraser];
+//                    for (int n=0; n<num_eraser; n++) {
+//                erasers[n] = new Eraser();
+//          }
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -80,7 +92,12 @@ void draw(){
           for(int j=0; j<num; j++){
                 pens[j].render();
                 pens[j].move();
+                
+
           }
+//               for (int s=0; s<num_eraser; s++) {
+//                  erasers[s].render();
+//          }
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -91,4 +108,5 @@ void stop(){
                   super.stop();
           }
 }
+
 

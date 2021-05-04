@@ -43,5 +43,11 @@ void takecolor() {
         }
         }
         
+//        for (int x=0;x<;x++) {
+//    goodcolor[numpal]=#000000;
+//    numpal++;
+//    goodcolor[numpal]=#FFFFFF;
+//    numpal++;
+//  }
 }
 
