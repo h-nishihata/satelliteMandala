@@ -1,4 +1,5 @@
-//DIGITAL MANDALA _ v007
+//DIGITAL MANDALA _ v008
+
 
 //dimensions
 int num = 100;
@@ -11,7 +12,9 @@ void setup(){
           size(1000,1000,P3D);
           ellipseMode(RADIUS);
           colorMode(RGB,100);
+          
           background(150,100,80);
+//        takecolor("sat_data.jpg");
           frameRate(100);
           smooth();
           noStroke();

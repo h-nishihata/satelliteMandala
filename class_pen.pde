@@ -15,6 +15,8 @@ public class Pen{
           int waitCnt;
           int step;
           
+          int num_eraser = 1;
+          Eraser[] erasers = new Eraser[num_eraser];          
 
 Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
   
@@ -31,6 +33,10 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           waitCnt = wc;
           step = 0;
           
+          for (int n=0; n<num_eraser; n++) {
+                erasers[n] = new Eraser();
+          }
+              
 }
 
 
@@ -93,11 +99,12 @@ void render(){
             this.draw();
             this.render();
             }
-//          stroke(random(60,200),random(30,50),random(0,30),10);  
-//          strokeWeight(1);
-//          line(Cx,Cy,rx,ry);
+
+            for (int s=0; s<num_eraser; s++) {
+                  erasers[s].render();
           }
-     }
+         }
+}
 //------------------------------------------------------------------------------------------------------------------
 void move(){
   float vx = random(-1.2, 1.2);
@@ -105,4 +112,5 @@ void move(){
               Cx+=vx;
               Cy+=vy;
 }
+
 }
