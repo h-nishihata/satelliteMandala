@@ -21,8 +21,11 @@ void setup(){
           mask.background(255,255,255);
           mask.noStroke();
           mask.fill(0,0,0);
-          mask.rectMode(CENTER);
-          mask.rect(width/2,height/2,height,height);   
+          mask.rectMode(CORNER);  
+          mask.quad(width*1/5,  8,
+                    width*1/5+height+13,  0,
+                    width*1/5+height+8,  height-27,
+                    width*1/5+5,  height-25);
           mask.endDraw();
          
           pg.mask(mask);  

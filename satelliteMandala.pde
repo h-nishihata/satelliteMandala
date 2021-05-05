@@ -8,9 +8,9 @@
 """"""      ""  .."" .88  ""    """  """ """ """      """  ""  """   ""  """ ""    ""    ""  ""   ""  """ ""   ""  """
                   """"
                   
-          Digital Mandala_v01, {Software} Structures
+          Digital Mandala_1.0, {Software} Structures
           h.nishihata  2013
-          wwww.nishihatahitoshi.com
+          www.nishihatahitoshi.com
           Fall in love with Processing
 */
 
@@ -77,10 +77,10 @@ void setup(){
           sample = new AudioSample[numsound];
 //          audio = minim.loadFile("01.mp3");
           sample[0] = minim.loadSample("empty.mp3");
-          sample[1] = minim.loadSample("01.mp3"); //  地鳴り
-          sample[2] = minim.loadSample("02.mp3"); //  ピン
-          sample[3] = minim.loadSample("03.mp3"); //  キーン
-          sample[4] = minim.loadSample("04.mp3"); //  シュイーン
+          sample[1] = minim.loadSample("01.mp3");
+          sample[2] = minim.loadSample("02.mp3");
+          sample[3] = minim.loadSample("03.mp3");
+          sample[4] = minim.loadSample("04.mp3");
 }
 
 //------------------------------------------------------------------------------------------------------------------
