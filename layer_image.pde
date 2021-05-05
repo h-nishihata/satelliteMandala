@@ -22,7 +22,7 @@ void setup(){
           b = gMapper.getMap();
           if(b == null)
                 b =loadImage("sat_data.jpg"); 
-          tint(60,100,100,50);
+          tint(60,100,100,40);
           image(b,0,0,width,height);
           
           b.loadPixels();

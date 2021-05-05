@@ -35,7 +35,7 @@ void takecolor() {
                     
         }
         }
-          for (int x=0;x<30;x++) {
+          for (int x=0;x<8;x++) {
                 goodcolor[x]=#FFFFFF;
          }
 }

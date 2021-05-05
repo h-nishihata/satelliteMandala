@@ -8,17 +8,20 @@ class Layer_eraser extends Layer {
           int s;
           int b;
           float a;
+          int al;
           int waiting_1=0;
           int waiting_2=0;
           int waiting_3=0;
           int waiting_4=0;
           int waiting_5=0;
           int waiting_6=0;
+          int waiting_7=0;
           boolean end_1 = false;
           boolean end_2 = false;
           boolean end_3 = false;
           boolean end_4 = false;
           boolean end_5 = false;
+          boolean end_6 = false;
 
 //------------------------------------------------------------------------------------------------------------------  
 Layer_eraser(PApplet parent) {
@@ -38,6 +41,7 @@ Layer_eraser(PApplet parent) {
           s = 0;
           b = 100;
           a = 0.6;
+          al = 35;
           
           ellipseMode(RADIUS);
           noStroke();
@@ -51,70 +55,78 @@ Layer_eraser(PApplet parent) {
 //------------------------------------------------------------------------------------------------------------------
 void draw() {
 
-//  afternoon(0,0,100) >> sunset(0,100,100) 
-          if(waiting_1 < 500){
+//  >> sunset : red(0,100,100) 
+          if(waiting_1 < 2000){
                 waiting_1++;
           }else{
                 fading(h, s, b, a);
                 s =100;
-                a=1;
                 end_1 = true;
           }
-//  sunset(0,100,100) >> night(0,0,0)
+//  sunset(0,100,100) >> night : black(0,0,0)
           if(end_1 == true){
-          if(waiting_2 < 500){
+          if(waiting_2 < 2000){
                 waiting_2++;
           }else{  
                 fading(h, s, b, a);
                 s=0;  
                 b=0;
-                a=2;
+                a=5;
                 end_2 = true;
           }
           }
-//  night(0,0,0) >> dawn(180,100,100)
+//  night(0,0,0) >> dawn : cyan(180,100,100)
           if(end_2 == true){
-          if(waiting_3 < 500){
+          if(waiting_3 < 2000){
                 waiting_3++;
           }else{
                 fading(h, s, b, a);   
                 h=180;
                 s=100;
                 b=100;
-                a =0.3;
+                a=0.6;
                 end_3 = true;
           } 
           }
-//  dawn(180,100,100) >> morning(60,100,100)
+//  dawn(180,100,100) >> morning : yellow(60,100,100)
           if(end_3 == true){
-          if(waiting_4 < 500){
+          if(waiting_4 < 2000){
                 waiting_4++;
           }else{
                 fading(h, s, b, a);   
                 h=60;
-                a=0.3;
                 end_4 = true;
           } 
           }
-//  morning(60,100,100) >> afternoon(0,0,100)
+//  morning(60,100,100) >> midday : white(0,0,100)
           if(end_4 == true){
-          if(waiting_5 < 500){
+          if(waiting_5 < 2000){
                 waiting_5++;
           }else{
                 fading(h, s, b, a);   
                 h=0;
                 s=0;
-                a=0.3;
                 end_5 = true;
           } 
           }
-          
+//  midday >> afternoon : violet(300,100,100)
           if(end_5 == true){
-          if(waiting_6 < 500){
+          if(waiting_6 < 2000){
                 waiting_6++;
           }else{
-                waiting_1 = waiting_2 = waiting_3 = waiting_4 = waiting_5 = waiting_6 = 0;
-                end_1 = end_2 = end_3 = end_4 = end_5 = false;
+                fading(h, s, b, a);   
+                h=300;
+                s=100;
+                end_6 = true;
+          } 
+          }          
+          
+          if(end_6 == true){
+          if(waiting_7 < 2000){
+                waiting_7++;
+          }else{
+                waiting_1 = waiting_2 = waiting_3 = waiting_4 = waiting_5 = waiting_6 = waiting_7 = 0;
+                end_1 = end_2 = end_3 = end_4 = end_5 = end_6 = false;
           }
           }
           
@@ -124,7 +136,8 @@ void draw() {
           float rx = Cx + (R1 * cos(radians(Ang1)) );
           float ry = Cy + (R1 * sin(radians(Ang1)) );
 
-          stroke(255,255,255,0);
+          stroke(255,255,255,al);
+          if(al > 0)al--; else al=50;
           strokeWeight(1);
 //          for(int n=0; n<3; n++){
           line(Cx, Cy, rx, ry);

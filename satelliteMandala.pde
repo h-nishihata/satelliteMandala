@@ -1,5 +1,5 @@
-//  Digital Mandala _ v034, {Software} Structures
-//  h.nishihata   23 July, 2013
+//  Digital Mandala _ v035, {Software} Structures
+//  h.nishihata   26 July, 2013
 //  wwww.nishihatahitoshi.com
 //  Falling Love with Processing
 
@@ -16,7 +16,7 @@ import ddf.minim.*;
           AudioSample[] sample;
           int numsound = 30;
           
-          int num = 100;
+          int num = 200;
           Pen[] pens;
           
           int maxpal = 100;
@@ -27,7 +27,8 @@ import ddf.minim.*;
 //------------------------------------------------------------------------------------------------------------------
 void setup(){
 
-          size(screen.width,screen.height);
+//          size(1280*2,960);
+          size(screenWidth,screenHeight);
           ellipseMode(RADIUS);
           colorMode(HSB,360,100,100,100);
           background(0,0,100);
@@ -56,12 +57,12 @@ void setup(){
           pens = new Pen[num];
           for(int i=0; i<num; i++){
             
-                float r = random(10,45);
+                float r = random(6,45);
 //                float cx = 50 + noise(random(width))*width;
 //                float cy = 30 + noise(random(height))*height;
                 float cx = random(width);
                 float cy = random(height);
-                float rot1 = random(-10,10);
+                float rot1 = random(-8,8);
                 float rot2 = 0.8;
                 int au = 5;
                 
