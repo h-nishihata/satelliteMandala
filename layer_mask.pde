@@ -21,8 +21,8 @@ void setup(){
 //          mask.background(255,255,255);
 //          mask.noStroke();
 //          mask.fill(0,0,0);
-//          mask.ellipse(mask.width / 4, mask.height / 2, screen.height, screen.height);
-//          mask.ellipse(mask.width *3/4, mask.height / 2, screen.height, screen.height);
+//          mask.ellipse(mask.width / 4, mask.height / 2, screen.height*0.88, screen.height*0.88);
+//          mask.ellipse(mask.width *3/4, mask.height / 2, screen.height*0.88, screen.height*0.88);
 //          mask.endDraw();
 //         
 //          pg.mask(mask);  
