@@ -1,4 +1,4 @@
-class Layer_eraser extends Layer {
+class Layer_time extends Layer {
   
           float Cx, Cy;
           float R1, R2;
@@ -24,7 +24,7 @@ class Layer_eraser extends Layer {
           boolean end_6 = false;
 
 //------------------------------------------------------------------------------------------------------------------  
-Layer_eraser(PApplet parent) {
+Layer_time(PApplet parent) {
           super(parent);
   }
 
@@ -45,24 +45,25 @@ Layer_eraser(PApplet parent) {
           h = 0;
           s = 0;
           b = 100;
-          a = 0.6;
+          a = 0.5;
   }
 
 //------------------------------------------------------------------------------------------------------------------
 void draw() {
 //  >> sunset[red](0,100,100) 
-          if(waiting_1 < 2000){
+          if(waiting_1 < 100){
                 waiting_1++;
           }else{
                 fading(h, s, b, a);
                 s =100;
                 end_1 = true;
-                changeSound(1,2);
+                changeSound(0,3);
           }
 //  sunset(0,100,100) >> night[black](0,0,0)
           if(end_1 == true){
-          if(waiting_2 < 2000){
+          if(waiting_2 < 100){
                 waiting_2++;
+                if(waiting_2 >= 1500) changeSound(1,2);
           }else{  
                 fading(h, s, b, a);
                 s=0;  
@@ -74,21 +75,21 @@ void draw() {
           }
 //  night(0,0,0) >> dawn[cyan](180,100,100)
           if(end_2 == true){
-          if(waiting_3 < 2000){
+          if(waiting_3 < 100){
                 waiting_3++;
           }else{
                 fading(h, s, b, a);   
                 h=180;
                 s=50;
                 b=80;
-                a=0.6;
+                a=0.5;
                 end_3 = true;
-                changeSound(1,0);
+                changeSound(0,0);
           } 
           }
 //  dawn(180,100,100) >> morning[yellow](60,100,100)
           if(end_3 == true){
-          if(waiting_4 < 2000){
+          if(waiting_4 < 100){
                 waiting_4++;
           }else{
                 fading(h, s, b, a);   
@@ -99,7 +100,7 @@ void draw() {
           }
 //  morning(60,100,100) >> midday[white](0,0,100)
           if(end_4 == true){
-          if(waiting_5 < 2000){
+          if(waiting_5 < 100){
                 waiting_5++;
           }else{
                 fading(h, s, b, a);   
@@ -108,25 +109,25 @@ void draw() {
                 b=100;
                 a=0;
                 end_5 = true;
-                changeSound(0,0);
+                changeSound(1,0);
           } 
           }
 //  midday >> afternoon[violet](300,100,100)
           if(end_5 == true){
-          if(waiting_6 < 2000){
+          if(waiting_6 < 100){
                 waiting_6++;
           }else{
                 fading(h, s, b, a);   
                 h=300;
                 s=100;
-                a=0.6;
+                a=0.5;
                 end_6 = true;
                 changeSound(1,0);
           } 
           }          
           
           if(end_6 == true){
-          if(waiting_7 < 2000){
+          if(waiting_7 < 100){
                 waiting_7++;
           }else{
                 waiting_1 = waiting_2 = waiting_3 = waiting_4 = waiting_5 = waiting_6 = waiting_7 = 0;
