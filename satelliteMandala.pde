@@ -1,5 +1,5 @@
-//  Digital Mandala _ v033, {Software} Structures
-//  h.nishihata   22 July, 2013
+//  Digital Mandala _ v034, {Software} Structures
+//  h.nishihata   23 July, 2013
 //  wwww.nishihatahitoshi.com
 //  Falling Love with Processing
 
