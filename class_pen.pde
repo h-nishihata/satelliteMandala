@@ -135,8 +135,8 @@ void render(){
 //------------------------------------------------------------------------------------------------------------------
 void move(){
 //  add velocity to position
-          float vx = random(-1.2, 1.2);
-          float vy = random(-0.5, 0.5);
+          float vx = random(-2, 2);
+          float vy = random(-1, 1);
           
           Cx+=vx;
           Cy+=vy;

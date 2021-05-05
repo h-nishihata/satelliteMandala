@@ -25,7 +25,7 @@ void setup(){
           if(b == null){
                 b =loadImage("sat_data.jpg"); 
            }
-tint(60,100,100,60);
+tint(60,100,100,30);
           image(b,0,0,width,height);
           
           b.loadPixels();
