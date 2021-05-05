@@ -31,8 +31,8 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           Cy = cy;
           Ang1 = Ang2 =0;
           R1 = r;
-          R2 = random(r/5,r/2);
-          R3 = random(r/10,r/5);
+          R2 = random(r/4,r/1.8);
+          R3 = random(r/8,r/4);
           Rot1 = rot1;
           Rot2 = rot2;
           angleUnit = au;
@@ -82,7 +82,7 @@ void render(){
           if(a>=10){
                 a -= 1;
           }
-          stroke(red(c),green(c),blue(c),a);
+          stroke(hue(c),saturation(c+2),brightness(c),a);
           strokeWeight(random(5,10));
           noFill();
 
@@ -99,6 +99,9 @@ void render(){
           if(temp != mainAngle) {
                 if(Ang1 <= 360){
                       ellipse(rx,ry,R2,R2);
+                                            strokeWeight(1);
+                                            stroke(random(0,360),50,100);
+                                            line(Cx,Cy,rx,ry);
                 }
           }
                 

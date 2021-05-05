@@ -6,7 +6,7 @@ class MyLayer extends Layer {
 
 //------------------------------------------------------------------------------------------------------------------
 void setup(){
-          colorMode(RGB,100);
+          colorMode(HSB,360,100,100,100);
           
 //  getting image   
           double mapCenterLat = random(10.000000,90.000000);
@@ -21,7 +21,7 @@ void setup(){
 //          b = gMapper.getMap();
           b =loadImage("sat_data.jpg");
 
-          tint(200,200,0,60);
+          tint(60,100,100,60);
           image(b,0,0,width,height);
           b.loadPixels();
                 

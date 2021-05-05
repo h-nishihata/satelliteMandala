@@ -1,4 +1,4 @@
-//  Digital Mandala _ v019, {Software} Structures
+//  Digital Mandala _ v020, {Software} Structures
 //  h.nishihata   25 June,2013
 //  wwww.nishihatahitoshi.com
 //  Falling Love with Processing
@@ -31,8 +31,8 @@ void setup(){
 
           size(1000,1000,P3D);
           ellipseMode(RADIUS);
-          colorMode(RGB,100);
-          background(255,255,255);
+          colorMode(HSB,360,100,100,100);
+          background(0,0,100);
           frameRate(10);
           smooth();
           
