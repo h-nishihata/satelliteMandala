@@ -58,7 +58,7 @@ void setup(){
                 float r = random(10,45);
                 float cx = 50 + noise(random(width))*width;
                 float cy = 30 + noise(random(height))*height;
-                float rot1 = random(1-0,10);
+                float rot1 = random(-10,10);
                 float rot2 = 0.8;
                 int au = 5;
                 

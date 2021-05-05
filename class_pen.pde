@@ -18,7 +18,8 @@ public class Pen{
 
           color c = somecolor();
           int a;
-
+int num = 1;
+Spot[] sp; 
 //------------------------------------------------------------------------------------------------------------------
 
 Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
@@ -37,6 +38,11 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           step = 0;
           a = 20;
           waiting = 0;
+          
+//            sp = new Spot[num];
+//  for(int n=0; n<num; n++){
+//          sp[n] = new Spot();
+//  }
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -75,14 +81,12 @@ void render(){
           if(a == 5) a = 20;
           }
           stroke(hue(c),saturation(c+2)+100,brightness(c),a);
-
           strokeWeight(random(3,8));
           noFill();
 
     if(step < waitCnt){
           step++;
     }else{
-
           Ang1 += Rot1;
           float rx = Cx + (R1 * cos(radians(Ang1)) );
           float ry = Cy + (R1 * sin(radians(Ang1)) );
@@ -91,7 +95,7 @@ void render(){
                 
           if(temp != mainAngle) {
                 if((Ang1 <= 360)
-//                ||(Ang1 >= -360)
+                ||(Ang1 >= -360)
 ){
                       ellipse(rx,ry,R2,R2);
                       strokeWeight(1);
@@ -112,8 +116,8 @@ void render(){
           }
   
           if(Ang2 >=360 && R1 < 200){
-                c-=10;
-                if(c == 0)c=360;
+                            c-=5;
+                if(c <= 0) c=360;
                 Ang1 = 0;
                 Ang2 = 0;
                 R1 += 20;
@@ -122,6 +126,8 @@ void render(){
           }
           
           if(R1 >= 200){
+                                        c-=5;
+                if(c <= 0) c=360;
                 Cx = random(width);
                 Cy = random(height);
                 Ang1 = 0;
@@ -130,6 +136,15 @@ void render(){
                 this.draw();
                 this.render();
           }
+//            for(int n=0; n<num; n++){
+//              sp[n].move_1();
+//                sp[n].draw();
+//  }
+  
+//              for(int n=0; n<1; n++){
+//              sp[n].move_2();
+//                sp[n].draw();
+//  }
   }
 }
 

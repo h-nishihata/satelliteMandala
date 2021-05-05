@@ -19,7 +19,7 @@ class Layer_eraser extends Layer {
           boolean end_3 = false;
           boolean end_4 = false;
           boolean end_5 = false;
-          int al;
+//          int al;
 //------------------------------------------------------------------------------------------------------------------  
 Layer_eraser(PApplet parent) {
           super(parent);
@@ -38,7 +38,7 @@ Layer_eraser(PApplet parent) {
           s = 0;
           b = 100;
           a = 0.6;
-          al=0;
+//          al=0;
           
           ellipseMode(RADIUS);
           noStroke();
@@ -58,7 +58,7 @@ void draw() {
           }else{
                 fading(h, s, b, a);
                 s =100;
-                a=0.6;
+                a=1;
                 end_1 = true;
           }
 //  sunset(0,100,100) >> night(0,0,0)
@@ -69,8 +69,7 @@ void draw() {
                 fading(h, s, b, a);
                 s=0;  
                 b=0;
-                a=1;
-                al=30;
+                a=5;
                 end_2 = true;
           }
           }
@@ -85,7 +84,7 @@ void draw() {
                 s=100;
                 b=100;
                 a =0.3;
-                al=0;
+//                al=0;
                 end_3 = true;
           } 
           }
@@ -126,7 +125,7 @@ void draw() {
           float rx = Cx + (R1 * cos(radians(Ang1)) );
           float ry = Cy + (R1 * sin(radians(Ang1)) );
 
-          stroke(255,255,255,al);
+          stroke(255,255,255,0);
           strokeWeight(1);
 //          for(int n=0; n<3; n++){
           line(Cx, Cy, rx, ry);
