@@ -57,19 +57,20 @@ void draw() {
                 fading(h, s, b, a);
                 s =100;
                 end_1 = true;
-                changeSound(1);
-                changeSound(2);
+                changeSound(0,3);
           }
 //  sunset(0,100,100) >> night[black](0,0,0)
           if(end_1 == true){
           if(waiting_2 < 2000){
                 waiting_2++;
+                if(waiting_2 >= 1500) changeSound(1,2);
           }else{  
                 fading(h, s, b, a);
                 s=0;  
                 b=0;
                 a=1;
                 end_2 = true;
+                changeSound(0,0);
           }
           }
 //  night(0,0,0) >> dawn[cyan](180,100,100)
@@ -83,7 +84,7 @@ void draw() {
                 b=80;
                 a=0.6;
                 end_3 = true;
-//                changeSound(2);
+                changeSound(0,0);
           } 
           }
 //  dawn(180,100,100) >> morning[yellow](60,100,100)
@@ -94,6 +95,7 @@ void draw() {
                 fading(h, s, b, a);   
                 h=60;
                 end_4 = true;
+                changeSound(2,0);
           } 
           }
 //  morning(60,100,100) >> midday[white](0,0,100)
@@ -107,6 +109,7 @@ void draw() {
                 b=100;
                 a=0;
                 end_5 = true;
+                changeSound(1,0);
           } 
           }
 //  midday >> afternoon[violet](300,100,100)
@@ -119,6 +122,7 @@ void draw() {
                 s=100;
                 a=0.6;
                 end_6 = true;
+                changeSound(1,0);
           } 
           }          
           

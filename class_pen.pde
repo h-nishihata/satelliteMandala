@@ -21,8 +21,8 @@ public class Pen{
           color c = somecolor();
           int a;
 
-          //int num = 1;
-          //Spot[] sp; 
+//          int num = 1;
+//          Spot[] sp; 
           
 //------------------------------------------------------------------------------------------------------------------
 Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
@@ -40,11 +40,11 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           step = 0;
           a = 10;
           waiting = (int)(random(0,80));
-          
-//            sp = new Spot[num];
-//  for(int n=0; n<num; n++){
-//          sp[n] = new Spot();
-//  }
+         
+//          sp = new Spot[num];
+//          for(int n=0; n<num; n++){
+//                sp[n] = new Spot();
+//          }
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -56,7 +56,6 @@ void draw(){
           ellipse(temp2[0],temp2[1],R1,R1);
           
           boolean touching = false;
-//          boolean judge = false;
           for(int t=0; t<num; t++){
                 Pen otherPen = pens[t];
                 float temp3[] = screenToAngle(otherPen.Cx,otherPen.Cy);
@@ -67,19 +66,31 @@ void draw(){
                             touching = true;
                             break;
                       }
+//                      if(dis < 0){
+//                            float midx = (Cx + otherPen.Cx)/2;
+//                            float midy = (Cy + otherPen.Cy)/2;
+//                            float temp5[] = screenToAngle(midx,midy);
+//                            float temp6[] = angleToSphere(temp5[0],temp5[1]);
+//                            fill(#000000);
+//                            ellipse(temp6[0],temp6[1],100,100);                            
+//                      }
                 }
           }
           
           if(touching){
-                int i;
-                int s = soundEffect();
-                int t = (int)(random(0,100));
-                if(t == 1)i=s; else i=0;
-                sample[i].trigger();
-//                int t = (int)(random(0,200));
-//                if(t == 1)i=s; else i=0;
-//                sample[i].trigger();
+                int i = soundType[0];
+                int i_ = soundType[1];
+                int t = (int)(random(0,300));
+                if(t == 1){
+                      sample[i].trigger();
+                }
+                int t_ = (int)(random(0,300));
+                if(t_ == 1){
+                      sample[i_].trigger();
+                }
           }
+          
+          
 }
 
 //------------------------------------------------------------------------------------------------------------------ 
@@ -226,12 +237,7 @@ void render(){
           }
             
 //            for(int n=0; n<num; n++){
-//              sp[n].move_1();
-//                sp[n].draw();
-//  }
-  
-//              for(int n=0; n<1; n++){
-//              sp[n].move_2();
+//              sp[n].move();
 //                sp[n].draw();
 //  }
   }
