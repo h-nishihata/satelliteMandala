@@ -40,5 +40,16 @@ void takecolor() {
          }
 }
 
+//------------------------------------------------------------------------------------------------------------------
+void fading(int h, int s, int b) {
+  
+          colorMode(HSB, 360, 100, 100, 100);
+          noStroke();
+          fill(h, s, b, 0.5);
+          rectMode(CORNER);
+          rect(0, 0, width, height);
+}
+
+
 // h.nishihata   July, 2013
 // Tokyo, Japan

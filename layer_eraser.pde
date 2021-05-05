@@ -8,6 +8,7 @@ class Layer_eraser extends Layer {
           int s;
           int b;
           int step;
+          int step_2;
           int wc;
 
 //------------------------------------------------------------------------------------------------------------------  
@@ -18,11 +19,12 @@ Layer_eraser(PApplet parent) {
 //------------------------------------------------------------------------------------------------------------------
   void setup() {
     
-          background(255, 255, 255, 0);
+          colorMode(RGB,100);
           wc = 500;
           step = 0;
+          step_2 = 0;
           h = 0;
-          s = 100;
+          s = 0;
           b = 100;
 
           Cx = 50 + noise(random(width))*width;
@@ -42,23 +44,35 @@ void draw() {
   
           noStroke();
           noFill();
-          if (h < 100) {
-                fading(h, s, b);
-                h ++;
-          }
-          if(h >= 100 && h < 300){
-                if(step < wc){
+          //  day >> sunset
+          if(step < wc){
                       step++;
                 }else{
+          if (s < 100) {
+                fading(h, s, b);
+                s ++;
+          }
+          }
+
+                //  sunset >> night
+                
+                  if(s == 100 && b > 0){
                       fading(h, s, b);
-                      h ++;
+                      b--;
+                }
+                if(b==0 && h<=240){
+                  if(step_2 < wc){
+                      step_2++;
+                }else{
+                h++;
+                s--;
                 }
           }
           Ang1 += Rot1;
           float rx = Cx + (R1 * cos(radians(Ang1)) );
           float ry = Cy + (R1 * sin(radians(Ang1)) );
 
-          stroke(255, 255, 255, 50);
+          stroke(255,255,255,100);
           strokeWeight(1);
           line(Cx, Cy, rx, ry);
 
@@ -79,14 +93,3 @@ void draw() {
           }
   } 
 }
-
-//------------------------------------------------------------------------------------------------------------------
-void fading(int h, int s, int b) {
-  
-          colorMode(HSB, 360, 100, 100, 100);
-          noStroke();
-          fill(h, s, b, 1);
-          rectMode(CORNER);
-          rect(0, 0, width, height);
-}
-

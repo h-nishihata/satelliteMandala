@@ -29,7 +29,7 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           Cy = cy;
           Ang1 = Ang2 =0;
           R1 = r;
-          R2 = random(r/6,r/1.8);
+          R2 = random(r/8,r/4);
           R3 = random(r/10,r/4);
           Rot1 = rot1;
           Rot2 = rot2;
@@ -37,7 +37,7 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           
           waitCnt = wc;
           step = 0;
-          a = 100;
+          a = 20;
           
 }
 
@@ -69,11 +69,13 @@ void draw(){
 //------------------------------------------------------------------------------------------------------------------ 
  
 void render(){
-  
-          if(a > 10) a -= 1;
-          if(a == 10) a += 1;
-          stroke(hue(c),saturation(c+2),brightness(c),a);
-          
+//int col = 0;
+//if(col > 0)col += 10;
+//if(col == 0)col
+          if(a > 5) a --;
+          if(a == 5) a = 20;
+          stroke(hue(c)-80,saturation(c+2)+80,brightness(c),a);
+
           strokeWeight(random(1,5));
           noFill();
 
@@ -91,7 +93,7 @@ void render(){
                 if((Ang1 <= 360)||(Ang1 >= -360)){
                       ellipse(rx,ry,R2,R2);
                       strokeWeight(1);
-                      stroke(random(0,360),50,100,a+20);
+                      stroke(0,0,100,a);
                       line(Cx,Cy,rx,ry);
                 }
           }
@@ -108,9 +110,8 @@ void render(){
           }
   
           if(Ang2 >=360 && R1 < 200){
-                c+=50;
-                if(c == 360 && c>0) c-=50;
-                
+c+=10;
+if(c >= 360){c=0;}
                 Ang1 = 0;
                 Ang2 = 0;
                 R1 += 10;
