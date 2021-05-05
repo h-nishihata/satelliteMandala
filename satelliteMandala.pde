@@ -1,5 +1,5 @@
-//  Digital Mandala _ v035, {Software} Structures
-//  h.nishihata   29 July, 2013
+//  Digital Mandala _ v037, {Software} Structures
+//  h.nishihata   30 July, 2013
 //  wwww.nishihatahitoshi.com
 //  Falling Love with Processing
 
@@ -14,7 +14,8 @@ import ddf.minim.*;
           
           Minim minim;
           AudioSample[] sample;
-          int numsound = 1000;
+          int numsound = 3;
+          int soundType = 0;
           
           int num = 200;
           Pen[] pens;
@@ -46,11 +47,9 @@ void setup(){
 //  sounds         
           minim = new Minim(this);
           sample = new AudioSample[numsound];
-          sample[0] = minim.loadSample("b_014.mp3");
-          sample[1] = minim.loadSample("b_070.mp3");
-          for(int s=2; s<numsound; s++){
-                sample[s] = minim.loadSample("empty.mp3");
-          }
+          sample[0] = minim.loadSample("empty.mp3");
+          sample[1] = minim.loadSample("b_014.mp3");
+          sample[2] = minim.loadSample("b_070.mp3");
           
 //  arrange linearly          
           pens = new Pen[num];

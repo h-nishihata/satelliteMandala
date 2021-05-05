@@ -17,8 +17,9 @@ void setup(){
           int    mapHeight = height;
           gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
 
-          b = gMapper.getMap();
-          if(b == null) b =loadImage("sat_data.jpg"); 
+//          b = gMapper.getMap();
+//          if(b == null)
+          b =loadImage("sat_data.jpg"); 
           tint(60,58,50,60);
           image(b,0,0,width,height);
           

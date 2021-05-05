@@ -56,6 +56,7 @@ void draw(){
           ellipse(temp2[0],temp2[1],R1,R1);
           
           boolean touching = false;
+//          boolean judge = false;
           for(int t=0; t<num; t++){
                 Pen otherPen = pens[t];
                 float temp3[] = screenToAngle(otherPen.Cx,otherPen.Cy);
@@ -70,7 +71,14 @@ void draw(){
           }
           
           if(touching){
-//                      sample[int(random(0,numsound))].trigger();
+                int i;
+                int s = soundEffect();
+                int t = (int)(random(0,100));
+                if(t == 1)i=s; else i=0;
+                sample[i].trigger();
+//                int t = (int)(random(0,200));
+//                if(t == 1)i=s; else i=0;
+//                sample[i].trigger();
           }
 }
 
@@ -117,7 +125,7 @@ void render(){
                       if((Ang1 < 360)||(Ang1 > -360)){
                             stroke(hue(c),saturation(c+2),brightness(c),a);
                             if(c<360)c++; else c=0;
-                            strokeWeight(random(3,15));       
+                            strokeWeight(random(3,10));       
                             ellipse(temp2[0] + screenw/4,
                                     temp2[1] + screenh/2,
                                     R2,R2);
@@ -140,7 +148,7 @@ void render(){
                       if((Ang1 < 360)||(Ang1 > -360)){
                             stroke(hue(c),saturation(c+2),brightness(c),a);
                             if(c<360)c++; else c=0;
-                            strokeWeight(random(3,15));
+                            strokeWeight(random(3,10));
                             ellipse(temp2[0]+ screenw*3/4,
                                     temp2[1]+screenh/2,
                                     R2,R2);
@@ -173,7 +181,7 @@ void render(){
                 if(Ang1 >= 360 && Ang2 < 360 || Ang1 <= -360 && Ang2 > -360){
                             stroke(hue(c),saturation(c+2),brightness(c),a);
                             if(c<360)c++; else c=0;
-                            strokeWeight(random(3,15));
+                            strokeWeight(random(3,10));
                             ellipse(temp4[0] + screenw/4,
                                     temp4[1] + screenh/2,
                                     R3,R3);
@@ -184,7 +192,7 @@ void render(){
                 if(Ang1 >= 360 && Ang2 < 360 || Ang1 <= -360 && Ang2 > -360){
                       stroke(hue(c),saturation(c+2),brightness(c),a);
                       if(c<360)c++; else c=0;
-                      strokeWeight(random(3,15));
+                      strokeWeight(random(3,10));
                       ellipse(temp4[0]+ screenw*3/4,
                               temp4[1]+screenh/2,
                               R3,R3);

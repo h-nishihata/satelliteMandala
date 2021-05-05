@@ -47,6 +47,26 @@ void fading(int h, int s, int b, float a) {
           rect(0, 0, width, height);
 }
 
+//------------------------------------------------------------------------------------------------------------------
+void changeSound(int number){
+          switch (number) {
+                case 1:
+                      soundType = 1;
+                      break; 
+                case 2:
+                      soundType = 2;
+                      break;
+                default: 
+                      soundType = 0;
+                      break;
+          }
+}
+
+//------------------------------------------------------------------------------------------------------------------
+int soundEffect(){
+          return soundType;
+}
+
 
 
 // h.nishihata   July, 2013

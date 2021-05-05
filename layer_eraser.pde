@@ -51,12 +51,14 @@ Layer_eraser(PApplet parent) {
 //------------------------------------------------------------------------------------------------------------------
 void draw() {
 //  >> sunset[red](0,100,100) 
-          if(waiting_1 < 2000){
+          if(waiting_1 < 100){
                 waiting_1++;
           }else{
                 fading(h, s, b, a);
                 s =100;
                 end_1 = true;
+                changeSound(1);
+                changeSound(2);
           }
 //  sunset(0,100,100) >> night[black](0,0,0)
           if(end_1 == true){
@@ -81,6 +83,7 @@ void draw() {
                 b=80;
                 a=0.6;
                 end_3 = true;
+//                changeSound(2);
           } 
           }
 //  dawn(180,100,100) >> morning[yellow](60,100,100)
