@@ -1,4 +1,3 @@
-
 //  COLORING ROUTINES
 color somecolor() {
           return goodcolor[int(random(numpal))];
@@ -6,7 +5,6 @@ color somecolor() {
 
 //------------------------------------------------------------------------------------------------------------------
 void takecolor() {
-  
           loadPixels();
           for (int x=0;x<b.width;x++){
           for (int y=0;y<b.height;y++) {
@@ -42,13 +40,13 @@ void takecolor() {
 
 //------------------------------------------------------------------------------------------------------------------
 void fading(int h, int s, int b, float a) {
-  
           colorMode(HSB, 360, 100, 100, 100);
           noStroke();
           fill(h, s, b, a);
           rectMode(CORNER);
           rect(0, 0, width, height);
 }
+
 
 
 // h.nishihata   July, 2013

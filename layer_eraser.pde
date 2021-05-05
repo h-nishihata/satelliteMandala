@@ -4,11 +4,11 @@ class Layer_eraser extends Layer {
           float R1, R2;
           float Ang1;
           float Rot1;
+          
           int h;
           int s;
           int b;
           float a;
-          int al;
           int waiting_1=0;
           int waiting_2=0;
           int waiting_3=0;
@@ -37,25 +37,20 @@ Layer_eraser(PApplet parent) {
           R1 = 50;
           Ang1 = 0;
           Rot1 = 5;
+          ellipseMode(RADIUS);
+          noStroke();
+          noFill();
+          ellipse(Cx, Cy, R1, R1);
+
           h = 0;
           s = 0;
           b = 100;
           a = 0.6;
-          al = 35;
-          
-          ellipseMode(RADIUS);
-          noStroke();
-          noFill();
-
-//          for(int n=0; n<3; n++){
-          ellipse(Cx, Cy, R1, R1);
-//          }
   }
 
 //------------------------------------------------------------------------------------------------------------------
 void draw() {
-
-//  >> sunset : red(0,100,100) 
+//  >> sunset[red](0,100,100) 
           if(waiting_1 < 2000){
                 waiting_1++;
           }else{
@@ -63,7 +58,7 @@ void draw() {
                 s =100;
                 end_1 = true;
           }
-//  sunset(0,100,100) >> night : black(0,0,0)
+//  sunset(0,100,100) >> night[black](0,0,0)
           if(end_1 == true){
           if(waiting_2 < 2000){
                 waiting_2++;
@@ -71,24 +66,24 @@ void draw() {
                 fading(h, s, b, a);
                 s=0;  
                 b=0;
-                a=5;
+                a=1;
                 end_2 = true;
           }
           }
-//  night(0,0,0) >> dawn : cyan(180,100,100)
+//  night(0,0,0) >> dawn[cyan](180,100,100)
           if(end_2 == true){
           if(waiting_3 < 2000){
                 waiting_3++;
           }else{
                 fading(h, s, b, a);   
                 h=180;
-                s=100;
-                b=100;
+                s=50;
+                b=80;
                 a=0.6;
                 end_3 = true;
           } 
           }
-//  dawn(180,100,100) >> morning : yellow(60,100,100)
+//  dawn(180,100,100) >> morning[yellow](60,100,100)
           if(end_3 == true){
           if(waiting_4 < 2000){
                 waiting_4++;
@@ -98,7 +93,7 @@ void draw() {
                 end_4 = true;
           } 
           }
-//  morning(60,100,100) >> midday : white(0,0,100)
+//  morning(60,100,100) >> midday[white](0,0,100)
           if(end_4 == true){
           if(waiting_5 < 2000){
                 waiting_5++;
@@ -106,10 +101,12 @@ void draw() {
                 fading(h, s, b, a);   
                 h=0;
                 s=0;
+                b=100;
+                a=0;
                 end_5 = true;
           } 
           }
-//  midday >> afternoon : violet(300,100,100)
+//  midday >> afternoon[violet](300,100,100)
           if(end_5 == true){
           if(waiting_6 < 2000){
                 waiting_6++;
@@ -117,6 +114,7 @@ void draw() {
                 fading(h, s, b, a);   
                 h=300;
                 s=100;
+                a=0.6;
                 end_6 = true;
           } 
           }          
@@ -136,13 +134,10 @@ void draw() {
           float rx = Cx + (R1 * cos(radians(Ang1)) );
           float ry = Cy + (R1 * sin(radians(Ang1)) );
 
-          stroke(255,255,255,al);
-          if(al > 0)al--; else al=50;
+          stroke(255,255,255,0);
           strokeWeight(1);
-//          for(int n=0; n<3; n++){
           line(Cx, Cy, rx, ry);
           moveEraser();
-//          }
   }
 
 //------------------------------------------------------------------------------------------------------------------
