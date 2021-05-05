@@ -1,7 +1,7 @@
 //  OBJECTS
 //        float screenw = 1280*2;
 //        float screenh = 960;
-          float screenw = screen.width*2;
+          float screenw = screen.width;
           float screenh = screen.height;
         
 public class Pen{
@@ -49,59 +49,38 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
 
 //------------------------------------------------------------------------------------------------------------------
 void draw(){
-          boolean touching = false;
           noStroke();
           noFill();
           float temp1[] = screenToAngle(Cx,Cy);
           float temp2[] = angleToSphere(temp1[0], temp1[1]);
-          boolean zPlus = true;
-          if(temp2[2]<0) zPlus = false;
-  if(zPlus){          
-          ellipse(temp2[0] + screenw/4,
-                  temp2[1] + screenh/2,
-                  R1,R1);
-  }else{
-          ellipse(temp2[0] + screenw*3/4,
-                  temp2[1] + screenh/2,
-                  R1,R1);            
-  }
+          ellipse(temp2[0],temp2[1],R1,R1);
           
-  
-
+          boolean touching = false;
           for(int t=0; t<num; t++){
                 Pen otherPen = pens[t];
                 float temp3[] = screenToAngle(otherPen.Cx,otherPen.Cy);
-                float temp4[] = angleToSphere(temp3[0],temp3[1]);
+                float temp4[] = screenToAngle(temp3[0],temp3[1]);
                 if(otherPen != this){
                       float dis = dist(temp2[0], temp2[1],temp4[0],temp4[1]);
                       if((dis - R1 - otherPen.R1) < 0){
-//                            float midx = (Cx + otherPen.Cx)/2;
-//                            float midy = (Cy + otherPen.Cy)/2;
-//                            float temp5[] = screenToAngle(midx,midy);
-//                            float temp6[] = angleToSphere(temp5[0],temp5[1]);
-//                            fill(0,100,100);
-//                            ellipse(temp6[0]+screenw/4,temp6[1]+screenh/2,5,5);                            
                             touching = true;
                             break;
                       }
                 }
           }
-
           
           if(touching){
                 int i = soundType[0];
                 int i_ = soundType[1];
-                int t = (int)(random(0,1000));
+                int t = (int)(random(0,100));
                 if(t == 1){
                       sample[i].trigger();
                 }
-                int t_ = (int)(random(0,1000));
+                int t_ = (int)(random(0,100));
                 if(t_ == 1){
                       sample[i_].trigger();
                 }
           }
-          
-          
 }
 
 //------------------------------------------------------------------------------------------------------------------ 
@@ -270,7 +249,7 @@ float[] screenToAngle( float sx, float sy ){
           float angs[] = new float[2];
           
           angs[0] = 360.*sx/screenw;
-          angs[1] = 90.+ 180. *(sy - (screenh/2.4))/screenh;
+          angs[1] = 90.+ 180. *(sy - (screenh/2.))/screenh;
           
           return angs;
 }
@@ -279,7 +258,7 @@ float[] screenToAngle( float sx, float sy ){
 float[] angleToSphere( float lat, float lon){
   
           float pos[] = new float[3];
-          float rad = screenh/2.4;
+          float rad = screenh/2;
           float y = rad*sin(lat*3.1415926/180.f);
           float xz = rad*cos(lat*3.1415926/180.f);
           float x = xz*cos(lon*3.1415926/180.);

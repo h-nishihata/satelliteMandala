@@ -1,5 +1,5 @@
-//  Digital Mandala_v039, {Software} Structures
-//  h.nishihata   7 August, 2013
+//  Digital Mandala_v038, {Software} Structures
+//  h.nishihata   2 August, 2013
 //  wwww.nishihatahitoshi.com
 //  Falling Love with Processing
 
@@ -14,8 +14,8 @@ import ddf.minim.*;
           
           Minim minim;
           AudioSample[] sample;
-          int numsound = 4;
-          int[] soundType = new int[numsound];
+          int numsound = 3;
+          int[] soundType = new int[3];
           
           int num = 200;
           Pen[] pens;
@@ -27,8 +27,8 @@ import ddf.minim.*;
 //  MAIN
 //------------------------------------------------------------------------------------------------------------------
 void setup(){
-//          size(screenWidth,screenHeight);
-          size(screenWidth*2,screenHeight);
+//          size(1280*2,960);
+          size(screenWidth,screenHeight);
           ellipseMode(RADIUS);
           colorMode(HSB,360,100,100,100);
           background(0,0,100);
@@ -37,10 +37,10 @@ void setup(){
           
 //  layers          
           layers = new AppletLayers(this);
-          Layer_time t = new Layer_time(this);
+          Layer_eraser e = new Layer_eraser(this);
           Layer_image m = new Layer_image(this);
           Layer_mask k = new Layer_mask(this);
-          layers.addLayer(t);
+          layers.addLayer(e);
           layers.addLayer(m);
           layers.addLayer(k);
           
@@ -50,7 +50,6 @@ void setup(){
           sample[0] = minim.loadSample("empty.mp3");
           sample[1] = minim.loadSample("b_014.mp3");
           sample[2] = minim.loadSample("b_070.mp3");
-          sample[3] = minim.loadSample("b_008.mp3");
           
 //  arrange linearly          
           pens = new Pen[num];
