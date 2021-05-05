@@ -3,6 +3,7 @@
           float screenh = screen.height;
         
 public class Pen{
+  
           float Cx, Cy;
           float rx,ry;
           float X,Y;
@@ -17,16 +18,17 @@ public class Pen{
           int waiting;
 
           color c = somecolor();
-          int a;
+          float a;
           
 //------------------------------------------------------------------------------------------------------------------
 Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
+  
 //  construct
           Cx = cx;
           Cy = cy;
           Ang1 = Ang2 =0;
           R1 = r;
-          R2 = random(r/10,r/8);
+          R2 = random(r/8,r/5);
           R3 = random(r/20,r/15);
           Rot1 = rot1;
           Rot2 = rot2;
@@ -35,6 +37,7 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           step = 0;
           a = 10;
           waiting = (int)(random(0,80));
+
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -50,7 +53,7 @@ void draw(){
                 if(otherPen != this){
                       float dis = dist(Cx,Cy,otherPen.Cx,otherPen.Cy);
                       if((dis - R1 - otherPen.R1) < 0){
-                            otherPen.c -= 15;
+                            otherPen.c --;
                             touching = true;
                             break;
                       }
@@ -72,15 +75,17 @@ void draw(){
                       fill(#FFFFFF,30);
                       ellipse(Cx,Cy,R1,R1);
                 }
-          }     
+          }
+     
 }
 
 //------------------------------------------------------------------------------------------------------------------ 
 void render(){
+  
           if(waiting < 80){
                 waiting++;
           }else{
-                if(a > 0) a --; else a = 35;
+                if(a > 0) a -=0.8; else a = 80;
           }
           noFill();
 
@@ -102,12 +107,12 @@ void render(){
          
           if(temp != mainAngle) {
                 if((Ang1 < 360)||(Ang1 > -360)){
-                      stroke(hue(c),saturation(c+2),brightness(c),a);
-                      if(c<360)c++; else c=0;
+                      stroke(hue(c),saturation(c),brightness(c),a);
+                      if(c<100){ c++; }else{ c=0; }
                       strokeWeight(random(3,10));       
                       ellipse(rx,ry,R2,R2);
                       strokeWeight(random(1,3));
-                      stroke(0,0,80,random(0,6));
+                      stroke(0,0,80,random(50));
                       line(Cx_A,Cy,rx,ry);
                       line(Cx_B,Cy,rx,ry);     
                       }
@@ -124,7 +129,7 @@ void render(){
                       
           if(Ang1 >= 360 && Ang2 < 360 || Ang1 <= -360 && Ang2 > -360){
                 stroke(hue(c),saturation(c),brightness(c),a);
-                if(c<360)c++; else c=0;
+                if(c<100)c++; else c=0;
                 strokeWeight(random(3,10));
                 ellipse(X,Y,R3,R3);
           }
@@ -151,17 +156,19 @@ void render(){
                 this.draw();
                 this.render();
           }
-            
+
 
   }
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void move(){
+  
 //  add velocity to position
           float vx = random(-3, 3);
           float vy = random(-1.5, 1.5);
           Cx+=vx;
           Cy+=vy;
+          
  }
 }

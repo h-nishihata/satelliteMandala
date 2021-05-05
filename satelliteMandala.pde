@@ -7,8 +7,8 @@
 """"""      ""  .."" .88  ""    """  """ """ """      """  ""  """   ""  """ ""    ""    ""  ""   ""  """ ""   ""  """
                   """"
                   
-          Satellite Mandala_1.5, {Software} Structures
-          h.nishihata  2013
+          Satellite Mandala_2.0, {Software} Structures
+          h.nishihata  2014
           Tokyo, Japan
           nishihatahitoshi.com
           
@@ -33,10 +33,7 @@ import processing.net.*;
           int num = 100;
           Pen[] pens;
 //  paricle
-          Spot1[] sp1;
-          Spot2[] sp2;  
-          Spot3[] sp3;
-          Spot4[] sp4;  
+          Spot[] sp;  
 //  pallete
           int maxpal = 100;
           int numpal = 0;
@@ -69,6 +66,7 @@ import processing.net.*;
 //  MAIN
 //------------------------------------------------------------------------------------------------------------------
 void setup(){
+  
           size(screenWidth,screenHeight);
           ellipseMode(RADIUS);
           colorMode(HSB,360,100,100,100);
@@ -96,36 +94,41 @@ void setup(){
           sample[4] = minim.loadSample("04.mp3");
 //  time          
           h = 0;
-          s = 15;
+          s = 80;
           br = 100;
-          a = 0.5;
+          a = 0.7;
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void paint(java.awt.Graphics g) {
+  
           if (layers != null) {
                 layers.paint(this);
           }else{
                 super.paint(g);
           }
+          
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void draw(){
+  
 //  Get Data from ARTSAT API
           if(waiting_1 == 0){
+
                 artsat = new XMLElement(this, "http://api.artsat.jp/web/v2/invader/sensor_data.xml?intrpl=linear&sensor=lat,lon");
                 results = artsat.getChild("results");
                 item = results.getChild("item");
                 sensors = item.getChild("sensors");
                 
                 lat = float(sensors.getChild("lat").getChild("value").getContent());
-                println("lat is "+lat);
+//                println("lat is "+lat);
                 lon = float(sensors.getChild("lon").getChild("value").getContent());
-                println("lon is "+lon);
+//                println("lon is "+lon);
           }
 
-          if(waiting_1==1 || waiting_2==2000 ||  waiting_3==2000 || waiting_4==2000 ||  waiting_5==2000 || waiting_6==2000){
+          if(waiting_1==1 || waiting_2==1999 ||  waiting_3==1999 || waiting_4==1999 ||  waiting_5==1999 || waiting_6==1999){
+
                 artsat = new XMLElement(this, "http://api.artsat.jp/web/v2/invader/sensor_data.xml?intrpl=linear&sensor=epx,epy,epz,emx,emy,emz");
                 results = artsat.getChild("results");
                 item = results.getChild("item");
@@ -143,13 +146,15 @@ void draw(){
 //                println(epy);
                 emz = float(sensors.getChild("emz").getChild("value").getContent());
 //                println(emz);
-                if(epx+epy+epz+emx+emy+emz > 0.4){  
-                      h=(int)random(0,60);
+                if(epx+epy+epz+emx+emy+emz > 0.3){  
+                      h=(int)random(0,100);
                 }else{
-                      h=(int)random(120,360);
+                      h=(int)random(100,360);
                 }
-//                println(h);
+//                println("hue is "+h);
           }
+
+
 
 // setting time
           if(end_0==true){
@@ -222,7 +227,8 @@ void draw(){
                 end_2 = end_3 = end_4 = end_5 = end_6 = false;
                 end_0 = end_1 = true;
           }
-          }          
+          }
+          
 }
 //------------------------------------------------------------------------------------------------------------------
 void stop(){
@@ -234,13 +240,14 @@ void stop(){
 }
 
 
-//  SCREEN SAVER
-//------------------------------------------------------------------------------------------------------------------
-//void mouseMoved(){
-//        exit();
-//}
-//
-//void keyPressed(){
-//        exit();
-//}
 
+/* SCREEN SAVER
+------------------------------------------------------------------------------------------------------------------
+void mouseMoved(){
+        exit();
+}
+
+void keyPressed(){
+        exit();
+}
+*/

@@ -5,6 +5,7 @@ color somecolor() {
 
 //------------------------------------------------------------------------------------------------------------------
 void takecolor() {
+  
           loadPixels();
           for (int x=0;x<b.width;x++){
           for (int y=0;y<b.height;y++){
@@ -36,21 +37,26 @@ void takecolor() {
           for (int x=0;x<8;x++) {
                 goodcolor[x]=#FFFFFF;
          }
+         
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void fading(int h, int s, int b, float a) {
+  
           colorMode(HSB, 360, 100, 100, 100);
           noStroke();
           fill(h, s, b, a);
           rectMode(CORNER);
           rect(0, 0, width, height);
+          
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void changeSound(int num1, int num2){
+  
           soundType[0] = num1;
           soundType[1] = num2;
+
 }
 
 
