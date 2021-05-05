@@ -1,12 +1,10 @@
 //  OBJECTS
-//        float screenw = 1280*2;
-//        float screenh = 960;
-          float screenw = screen.width*2;
+          float screenw = screen.width;
           float screenh = screen.height;
         
 public class Pen{
           float Cx, Cy;
-          float Rx,Ry;
+          float rx,ry;
           float X,Y;
           float Ang1, Ang2;
           float R1, R2, R3;
@@ -20,9 +18,8 @@ public class Pen{
 
           color c = somecolor();
           int a;
-
 //          int num = 1;
-//          Spot[] sp; 
+          Spot sp; 
           
 //------------------------------------------------------------------------------------------------------------------
 Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
@@ -31,7 +28,7 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           Cy = cy;
           Ang1 = Ang2 =0;
           R1 = r;
-          R2 = random(r/6,r/4);
+          R2 = random(r/10,r/8);
           R3 = random(r/20,r/15);
           Rot1 = rot1;
           Rot2 = rot2;
@@ -40,62 +37,43 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           step = 0;
           a = 10;
           waiting = (int)(random(0,80));
-         
-//          sp = new Spot[num];
-//          for(int n=0; n<num; n++){
-//                sp[n] = new Spot();
-//          }
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void draw(){
-          boolean touching = false;
+
           noStroke();
           noFill();
-          float temp1[] = screenToAngle(Cx,Cy);
-          float temp2[] = angleToSphere(temp1[0], temp1[1]);
-          boolean zPlus = true;
-          if(temp2[2]<0) zPlus = false;
-  if(zPlus){          
-          ellipse(temp2[0] + screenw/4,
-                  temp2[1] + screenh/2,
-                  R1,R1);
-  }else{
-          ellipse(temp2[0] + screenw*3/4,
-                  temp2[1] + screenh/2,
-                  R1,R1);            
-  }
+          ellipse(Cx,Cy,R1,R1);
           
-  
-
+          boolean touching = false;
           for(int t=0; t<num; t++){
                 Pen otherPen = pens[t];
-                float temp3[] = screenToAngle(otherPen.Cx,otherPen.Cy);
-                float temp4[] = angleToSphere(temp3[0],temp3[1]);
                 if(otherPen != this){
-                      float dis = dist(temp2[0], temp2[1],temp4[0],temp4[1]);
+                      float dis = dist(Cx,Cy,otherPen.Cx,otherPen.Cy);
                       if((dis - R1 - otherPen.R1) < 0){
 //                            float midx = (Cx + otherPen.Cx)/2;
 //                            float midy = (Cy + otherPen.Cy)/2;
-//                            float temp5[] = screenToAngle(midx,midy);
-//                            float temp6[] = angleToSphere(temp5[0],temp5[1]);
-//                            fill(0,100,100);
-//                            ellipse(temp6[0]+screenw/4,temp6[1]+screenh/2,5,5);                            
+                            otherPen.c += 50;
+//                            int r =(int)(random(0,100));
+//                            if(r==1){
+//                  sp = new Spot(midx,midy);
+//                            }
                             touching = true;
                             break;
                       }
                 }
           }
-
+         
           
           if(touching){
                 int i = soundType[0];
                 int i_ = soundType[1];
-                int t = (int)(random(0,1000));
+                int t = (int)(random(0,10000));
                 if(t == 1){
                       sample[i].trigger();
                 }
-                int t_ = (int)(random(0,1000));
+                int t_ = (int)(random(0,10000));
                 if(t_ == 1){
                       sample[i_].trigger();
                 }
@@ -126,68 +104,22 @@ void render(){
           float ry = Cy + (R1 * sin(radians(Ang1)) );
           float Cx_A =  Cx + (R1/2 * cos(radians(Ang1-90)) );
           float Cx_B =  Cx + (R1/2 * cos(radians(Ang1+90)) );
-          
-          float Ctemp1[] = screenToAngle(Cx,Cy);
-          float Ctemp2[] = angleToSphere(Ctemp1[0], Ctemp1[1]);
-          float CtempA_1[] = screenToAngle(Cx_A,Cy);
-          float CtempA_2[] = angleToSphere(CtempA_1[0], CtempA_1[1]);
-          float CtempB_1[] = screenToAngle(Cx_B,Cy);
-          float CtempB_2[] = angleToSphere(CtempB_1[0], CtempB_1[1]);
-          float temp1[] = screenToAngle(rx,ry);
-          float temp2[] = angleToSphere(temp1[0], temp1[1]);
 
-          boolean zPlus = true;
-          if(Ctemp2[2]<0) zPlus = false;
-  
           int temp = (int)(Ang1) / angleUnit;
          
-   if(zPlus){
-                
-                if(temp != mainAngle) {
-                      if((Ang1 < 360)||(Ang1 > -360)){
-                            stroke(hue(c),saturation(c+2),brightness(c),a);
-                            if(c<360)c++; else c=0;
-                            strokeWeight(random(3,10));       
-                            ellipse(temp2[0] + screenw/4,
-                                    temp2[1] + screenh/2,
-                                    R2,R2);
-                            strokeWeight(random(1,3));
-                            stroke(0,0,100,random(1,20));
-                            line(CtempA_2[0] + screenw/4,
-                                 CtempA_2[1] + screenh/2,
-                                 temp2[0] + screenw/4,
-                                 temp2[1] + screenh/2);
-                            line(CtempB_2[0] + screenw/4,
-                                 CtempB_2[1] + screenh/2,
-                                 temp2[0] + screenw/4,
-                                 temp2[1] + screenh/2);     
+          if(temp != mainAngle) {
+                if((Ang1 < 360)||(Ang1 > -360)){
+                      stroke(hue(c),saturation(c+2),brightness(c),a);
+                      if(c<360)c++; else c=0;
+                      strokeWeight(random(3,10));       
+                      ellipse(rx,ry,R2,R2);
+                      strokeWeight(random(1,3));
+                      stroke(0,0,100,random(1,20));
+                      line(Cx_A,Cy,rx,ry);
+                      line(Cx_B,Cy,rx,ry);     
                       }
-                }
+          }
        
-   }else{      
-               
-                if(temp != mainAngle) {
-                      if((Ang1 < 360)||(Ang1 > -360)){
-                            stroke(hue(c),saturation(c+2),brightness(c),a);
-                            if(c<360)c++; else c=0;
-                            strokeWeight(random(3,10));
-                            ellipse(temp2[0]+ screenw*3/4,
-                                    temp2[1]+screenh/2,
-                                    R2,R2);
-                            strokeWeight(random(1,3));
-                            stroke(0,0,100,random(1,20));
-                            line(CtempA_2[0]+screenw*3/4,
-                                 CtempA_2[1]+screenh/2,
-                                 temp2[0]+screenw*3/4,
-                                 temp2[1]+screenh/2);
-                            line(CtempB_2[0] + screenw*3/4,
-                                 CtempB_2[1] + screenh/2,
-                                 temp2[0] + screenw*3/4,
-                                 temp2[1] + screenh/2);
-                            
-                      }
-                }
-   }
           mainAngle = temp;    
                   
 //********** Phase 2 **********    
@@ -195,32 +127,14 @@ void render(){
           Ang2 += Rot2;
           X = rx + (R2*cos(radians(Ang2)));
           Y = ry + (R2*sin(radians(Ang2)));
-          
-          float temp3[] = screenToAngle(X,Y);
-          float temp4[] = angleToSphere(temp3[0], temp3[1]);   
+         
                       
-   if(zPlus){
-                if(Ang1 >= 360 && Ang2 < 360 || Ang1 <= -360 && Ang2 > -360){
-                            stroke(hue(c),saturation(c+2),brightness(c),a);
-                            if(c<360)c++; else c=0;
-                            strokeWeight(random(3,10));
-                            ellipse(temp4[0] + screenw/4,
-                                    temp4[1] + screenh/2,
-                                    R3,R3);
-                }
-                
-   }else{
-     
-                if(Ang1 >= 360 && Ang2 < 360 || Ang1 <= -360 && Ang2 > -360){
-                      stroke(hue(c),saturation(c+2),brightness(c),a);
-                      if(c<360)c++; else c=0;
-                      strokeWeight(random(3,10));
-                      ellipse(temp4[0]+ screenw*3/4,
-                              temp4[1]+screenh/2,
-                              R3,R3);
-                }
-                
-   }
+          if(Ang1 >= 360 && Ang2 < 360 || Ang1 <= -360 && Ang2 > -360){
+                stroke(hue(c),saturation(c+2),brightness(c),a);
+                if(c<360)c++; else c=0;
+                strokeWeight(random(3,10));
+                ellipse(X,Y,R3,R3);
+          }
   
 //********** Phase 3 **********  
 
@@ -229,7 +143,7 @@ void render(){
                 Ang2 = 0;
                 R1 += 20;
                 this.draw();
-                this.render();
+                this.render();                                         
           }
 
 //********** Phase 4 **********
@@ -237,8 +151,6 @@ void render(){
           if(R1 >= 150){
                 float cx = 50 + noise(random(width))*width;
                 float cy = 30 + noise(random(height))*height;
-//                Cx = random(width);
-//                Cy = random(height);
                 Ang1 = 0;
                 Ang2 = 0;
                 R1 = random(8,45);
@@ -247,10 +159,7 @@ void render(){
                 this.render();
           }
             
-//            for(int n=0; n<num; n++){
-//              sp[n].move();
-//                sp[n].draw();
-//  }
+
   }
 }
 
@@ -262,32 +171,4 @@ void move(){
           Cx+=vx;
           Cy+=vy;
  }
-}
-
-//------------------------------------------------------------------------------------------------------------------
-float[] screenToAngle( float sx, float sy ){
-  
-          float angs[] = new float[2];
-          
-          angs[0] = 360.*sx/screenw;
-          angs[1] = 90.+ 180. *(sy - (screenh/2.4))/screenh;
-          
-          return angs;
-}
-
-//------------------------------------------------------------------------------------------------------------------
-float[] angleToSphere( float lat, float lon){
-  
-          float pos[] = new float[3];
-          float rad = screenh/2.4;
-          float y = rad*sin(lat*3.1415926/180.f);
-          float xz = rad*cos(lat*3.1415926/180.f);
-          float x = xz*cos(lon*3.1415926/180.);
-          float z = xz*sin(lon*3.1415926/180.);
-          
-          pos[0] = x;
-          pos[1] = y;
-          pos[2] = z;
-          
-          return pos;
 }

@@ -7,7 +7,7 @@ color somecolor() {
 void takecolor() {
           loadPixels();
           for (int x=0;x<b.width;x++){
-          for (int y=0;y<b.height;y++) {
+          for (int y=0;y<b.height;y++){
   
                     x = int(random(b.width));
                     y = int(random(b.height));
@@ -55,5 +55,5 @@ void changeSound(int num1, int num2){
 
 
 
-// h.nishihata   July, 2013
+// h.nishihata  2013
 // Tokyo, Japan

@@ -1,7 +1,20 @@
-//  Digital Mandala_v039, {Software} Structures
-//  h.nishihata   7 August, 2013
-//  wwww.nishihatahitoshi.com
-//  Falling Love with Processing
+/*
+
+
+8888888o    88            88   oo            888      8888    8888                          888           88
+88     Y88  88  .o888o88  88  88888 .88888o  888      888Yo  oY 88  .8888o.  88.888o.  .8888.88  .8888o.  88   o8888o
+88     .88  88  88    88  88   88    ..oo88  888      888 Y..Y  88   ..oo88  88    88 o8Y   Y88   ..oo88  88   ..oo88
+88....o8Y   88  o8o..o88  88   88.. 88...88  888      888 YooY  88 88o  o88  88    88  Y8...o88 Y8o  .88  88  88. .o8
+""""""      ""  .."" .88  ""    """  """ """ """      """  ""  """   ""  """ ""    ""    ""  ""   ""  """ ""   ""  """
+                  """"
+                  
+          Digital Mandala_v01, {Software} Structures
+          h.nishihata  2013
+          wwww.nishihatahitoshi.com
+          Fall in love with Processing
+*/
+
+
 
 //  dimensions
 import com.nootropic.processing.layers.*;
@@ -14,21 +27,28 @@ import ddf.minim.*;
           
           Minim minim;
           AudioSample[] sample;
-          int numsound = 4;
+          int numsound = 5;
           int[] soundType = new int[numsound];
           
-          int num = 200;
+          int num = 50;
           Pen[] pens;
           
           int maxpal = 100;
           int numpal = 0;
           color[] goodcolor = new color[maxpal];
+          
+          int waiting_1=0;
+          int waiting_2=0;
+          int waiting_3=0;
+          int waiting_4=0;
+          int waiting_5=0;
+          int waiting_6=0;
+          int waiting_7=0;
 
 //  MAIN
 //------------------------------------------------------------------------------------------------------------------
 void setup(){
-//          size(screenWidth,screenHeight);
-          size(screenWidth*2,screenHeight);
+          size(screenWidth,screenHeight);
           ellipseMode(RADIUS);
           colorMode(HSB,360,100,100,100);
           background(0,0,100);
@@ -37,34 +57,28 @@ void setup(){
           
 //  layers          
           layers = new AppletLayers(this);
+          Layer_pen p = new Layer_pen(this);
           Layer_time t = new Layer_time(this);
+          Layer_pen2 p_ = new Layer_pen2(this);
           Layer_image m = new Layer_image(this);
           Layer_mask k = new Layer_mask(this);
+
+          layers.addLayer(p);  
           layers.addLayer(t);
-          layers.addLayer(m);
+          layers.addLayer(p_);
+          layers.addLayer(m);        
           layers.addLayer(k);
           
 //  sounds         
           minim = new Minim(this);
           sample = new AudioSample[numsound];
           sample[0] = minim.loadSample("empty.mp3");
-          sample[1] = minim.loadSample("b_014.mp3");
-          sample[2] = minim.loadSample("b_070.mp3");
-          sample[3] = minim.loadSample("b_008.mp3");
+          sample[1] = minim.loadSample("01.mp3");
+          sample[2] = minim.loadSample("02.mp3");
+          sample[3] = minim.loadSample("03.mp3");
+          sample[4] = minim.loadSample("04.mp3");
           
-//  arrange linearly          
-          pens = new Pen[num];
-          for(int i=0; i<num; i++){
-                float r = random(6,45);
-//                float cx = 50 + noise(random(width))*width;
-//                float cy = 30 + noise(random(height))*height;
-                float cx = random(width);
-                float cy = random(height);
-                float rot1 = random(-8,8);
-                float rot2 = 0.8;
-                int au = 5;
-                pens[i] = new Pen( r,cx,cy,rot1,rot2,au, (int)(random(1,500)) );
-          }
+
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -78,12 +92,6 @@ void paint(java.awt.Graphics g) {
 
 //------------------------------------------------------------------------------------------------------------------
 void draw(){
-//  move pens  
-          for(int j=0; j<num; j++){
-                pens[j].draw();
-                pens[j].render();
-                pens[j].move();
-          }
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -93,5 +101,15 @@ void stop(){
                 minim.stop();
                 super.stop();
           }
+}
+
+//------------------------------------------------------------------------------------------------------------------
+//  screen saver
+void mouseMoved(){
+  exit();
+}
+
+void keyPressed(){
+  exit();
 }
 
