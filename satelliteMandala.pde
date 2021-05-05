@@ -1,4 +1,4 @@
-//  Digital Mandala _ v024, {Software} Structures
+//  Digital Mandala _ v025, {Software} Structures
 //  h.nishihata   4 July, 2013
 //  wwww.nishihatahitoshi.com
 //  Falling Love with Processing
@@ -55,10 +55,10 @@ void setup(){
           pens = new Pen[num];
           for(int i=0; i<num; i++){
             
-                float r = random(10,30);
+                float r = random(8,45);
                 float cx = 50 + noise(random(width))*width;
                 float cy = 30 + noise(random(height))*height;
-                float rot1 = random(-30,30);
+                float rot1 = random(-40,40);
                 float rot2 = 0.8;
                 int au = 5;
                 
