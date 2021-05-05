@@ -50,7 +50,7 @@ void draw(){
                 if(otherPen != this){
                       float dis = dist(Cx,Cy,otherPen.Cx,otherPen.Cy);
                       if((dis - R1 - otherPen.R1) < 0){
-                            otherPen.c += 100;
+                            otherPen.c -= 15;
                             touching = true;
                             break;
                       }

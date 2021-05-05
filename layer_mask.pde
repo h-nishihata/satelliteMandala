@@ -7,6 +7,7 @@ Layer_mask(PApplet parent) {
 
 //------------------------------------------------------------------------------------------------------------------
 void setup(){
+  
           colorMode(RGB,100);
           background(255,255,255,0);
           smooth();
@@ -21,16 +22,13 @@ void setup(){
           mask.background(255,255,255);
           mask.noStroke();
           mask.fill(0,0,0);
-          mask.rectMode(CORNER);  
-          mask.quad(width*1/5,  8,
-                    width*1/5+height+13,  0,
-                    width*1/5+height+8,  height-27,
-                    width*1/5+5,  height-25);
+          mask.rectMode(CENTER);  
+          mask.rect(width/2, height/2, height, height);
           mask.endDraw();
          
           pg.mask(mask);  
           image(pg, 0, 0);
-
+          
 }
 
 //------------------------------------------------------------------------------------------------------------------
