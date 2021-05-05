@@ -16,7 +16,7 @@ public class Pen{
           int step;
           
           color C;
-          int a;
+          
           
 //  erasers
 //------------------------------------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc, color c
           waitCnt = wc;
           step = 0;
           C = c;
-          a = 0;
+
 //  create erasers          
 
               
@@ -78,12 +78,7 @@ void render(){
 
                   noFill();
                   strokeWeight(random(1,5));
-                 a = 100;
-               
-       
-                  if(a >= 0){
-                  stroke(red(C),green(C),blue(C),a--);
-                  }
+                  stroke(red(C),green(C),blue(C),20);
 
 
   
@@ -125,11 +120,7 @@ void render(){
             }
             
             if(R1 >= 1000){
-            Ang1 = 0;
-            Ang2 = 0;
-R1 = random(10,30);
-                  this.draw();
-            this.render();
+              background(0,0);
             }
 
            
