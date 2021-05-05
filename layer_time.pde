@@ -46,7 +46,7 @@ void setup() {
 //------------------------------------------------------------------------------------------------------------------
 void draw() {
 //  >> sunset[red](0,100,100) 
-          if(waiting_1 < 10){
+          if(waiting_1 < 2000){
                 waiting_1++;
           }else{
                 fading(h, s, b, a);
@@ -56,7 +56,7 @@ void draw() {
           }
 //  sunset(0,100,100) >> night[black](0,0,0)
           if(end_1 == true){
-          if(waiting_2 < 500){
+          if(waiting_2 < 2000){
                 waiting_2++;
                 if(waiting_2 >= 1300) changeSound(0,2);
           }else{  

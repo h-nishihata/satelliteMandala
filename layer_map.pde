@@ -1,4 +1,5 @@
 int i = 1;
+
 class Layer_map extends Layer {
 
 //------------------------------------------------------------------------------------------------------------------
@@ -8,24 +9,7 @@ Layer_map(PApplet parent) {
 
 //------------------------------------------------------------------------------------------------------------------
 void setup() {
-          colorMode(HSB, 360, 100, 100, 100);
-      
-//          double mapCenterLat = random(10.000000, 90.000000);
-//          double mapCenterLon = random(10.000000, 90.000000);
-//          int zoomLevel = 10;
-//          String mapType = GoogleMapper.MAPTYPE_SATELLITE;
-//          int mapWidth = width;   
-//          int mapHeight = height;
-//          gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
-      
-//          b = gMapper.getMap();
-//          if(b == null)
-          b =loadImage("0.png"); 
-          tint(60, 100, 100, 50);
-          image(b, 0, 0, width, height);
-      
-          b.loadPixels();
-          takecolor();
+
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -42,19 +26,18 @@ void draw() {
                 updatePixels();
           }
           
+
+          //                if(i == 4) i=0;         
+          //                b =loadImage(i+".png");
+          ////                if(b==null){
+          ////                      i=0;
+          ////                      b =loadImage(i+".png");
+          ////                }
+          //                image(b, 0, 0, width, height);
+          //                i++;
+          //                b.loadPixels();
+          //                takecolor();
           
-          if(waiting_7 == 1){
-                if(i == 4) i=0;         
-                b =loadImage(i+".png");
-//                if(b==null){
-//                      i=0;
-//                      b =loadImage(i+".png");
-//                }
-                image(b, 0, 0, width, height);
-                i++;
-                b.loadPixels();
-                takecolor();
-          }
                 
   }
 }

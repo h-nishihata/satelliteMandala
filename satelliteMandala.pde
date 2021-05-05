@@ -19,6 +19,15 @@
 //  dimensions
 import com.nootropic.processing.layers.*;
 import ddf.minim.*;
+import processing.net.*;
+
+XMLElement artsat, results, item, sensors;
+float lat, lon;
+
+          int zoomLevel;
+          String mapType;
+          int mapWidth;   
+          int mapHeight;
 
           AppletLayers layers;
           
@@ -34,10 +43,8 @@ import ddf.minim.*;
           int num = 100;
           Pen[] pens;
           
-          Spot1[] sp1;
-          Spot2[] sp2;  
-          Spot3[] sp3;
-          Spot4[] sp4;            
+          Spot[] sp; 
+          
           int maxpal = 100;
           int numpal = 0;
           color[] goodcolor = new color[maxpal];
@@ -79,10 +86,10 @@ void setup(){
           sample = new AudioSample[numsound];
 //          audio = minim.loadFile("01.mp3");
           sample[0] = minim.loadSample("empty.mp3");
-          sample[1] = minim.loadSample("01.mp3");
-          sample[2] = minim.loadSample("02.mp3");
-          sample[3] = minim.loadSample("03.mp3");
-          sample[4] = minim.loadSample("04.mp3");
+          sample[1] = minim.loadSample("01.mp3"); //  地鳴り
+          sample[2] = minim.loadSample("02.mp3"); //  ピン
+          sample[3] = minim.loadSample("03.mp3"); //  キーン
+          sample[4] = minim.loadSample("04.mp3"); //  シュイーン
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -96,6 +103,37 @@ void paint(java.awt.Graphics g) {
 
 //------------------------------------------------------------------------------------------------------------------
 void draw(){
+  artsat = new XMLElement(this, "http://api.artsat.jp/web/v2/invader/sensor_data.xml?intrpl=linear&sensor=lat,lon,tin");
+
+  results = artsat.getChild("results");
+  item = results.getChild("item");
+  sensors = item.getChild("sensors");
+
+
+
+//  delay(10000);
+          colorMode(HSB, 360, 100, 100, 100);
+          zoomLevel = 10;
+          mapType = GoogleMapper.MAPTYPE_SATELLITE;
+          mapWidth = width;   
+          mapHeight = height;
+
+
+  if(waiting_1 == 1){    
+      lat = float(sensors.getChild("lat").getChild("value").getContent());
+  println(lat);
+
+  lon = float(sensors.getChild("lon").getChild("value").getContent());
+  println(lon);
+            gMapper  = new GoogleMapper(lat, lon, zoomLevel, mapType, mapWidth, mapHeight);
+          b = gMapper.getMap();
+                if(b == null){ b =loadImage("0.png"); }
+          tint(60, 100, 100, 50);
+          image(b, 0, 0, width, height);
+      
+          b.loadPixels();
+          takecolor();
+  }
 }
 
 //------------------------------------------------------------------------------------------------------------------
