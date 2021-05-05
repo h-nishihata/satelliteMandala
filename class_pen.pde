@@ -77,7 +77,7 @@ void render(){
           }else{
           if(a == 5) a = 20;
           }
-          stroke(hue(c)-80,saturation(c+2)+80,brightness(c),a);
+          stroke(hue(c),saturation(c+2)+80,brightness(c),a);
 
           strokeWeight(random(1,5));
           noFill();
@@ -96,7 +96,7 @@ void render(){
                 if((Ang1 <= 360)||(Ang1 >= -360)){
                       ellipse(rx,ry,R2,R2);
                       strokeWeight(1);
-                      stroke(0,0,100,a);
+                      stroke(0,0,100,a+5);
                       line(Cx,Cy,rx,ry);
                 }
           }
@@ -113,8 +113,8 @@ void render(){
           }
   
           if(Ang2 >=360 && R1 < 200){
-c+=10;
-if(c >= 360){c=0;}
+                c-=10;
+                if(c <= 0)c=360;
                 Ang1 = 0;
                 Ang2 = 0;
                 R1 += 10;
@@ -123,7 +123,7 @@ if(c >= 360){c=0;}
           }
           
           if(R1 >= 200){
-                a=100;
+//                a=20;
                 Cx = random(width);
                 Cy = random(height);
                 Ang1 = 0;
