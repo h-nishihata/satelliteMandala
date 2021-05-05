@@ -42,12 +42,9 @@ void takecolor() {
              
         }
         }
-        
-//        for (int x=0;x<;x++) {
-//    goodcolor[numpal]=#000000;
-//    numpal++;
-//    goodcolor[numpal]=#FFFFFF;
-//    numpal++;
-//  }
+        for (int x=0;x<20;x++) {
+ goodcolor[x]=color(#998c3e,20);
+ goodcolor[x]=color(#FFFFFF,50);
+  }
 }
 

@@ -14,14 +14,17 @@ public class Pen{
           int angleUnit;
           int waitCnt;
           int step;
-          
-          color C;
-          
+
+          color c = somecolor();
+int a;
           
 //  erasers
+//          int num_eraser = 1;
+//          Eraser[] erasers = new Eraser[num_eraser];          
+
 //------------------------------------------------------------------------------------------------------------------
 
-Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc, color c){
+Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
   
 //  construct
           Cx = cx;
@@ -35,10 +38,12 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc, color c
           angleUnit = au;
           waitCnt = wc;
           step = 0;
-          C = c;
+a = 255;
 
 //  create erasers          
-
+//          for (int n=0; n<num_eraser; n++) {
+//                erasers[n] = new Eraser();
+//          }
               
 }
 
@@ -62,26 +67,45 @@ void draw(){
                 }
           }
           if(touching){
-              for(int i=0; i<numsound; i++){ 
-                      sample[int(random(numsound))].trigger();
+//              for(int i=0; i<numsound; i++){ 
+//                      sample[int(random(numsound))].trigger();
               }
           
 }
-}
+
 //------------------------------------------------------------------------------------------------------------------ 
  
 void render(){
-  
+
+
+
+if(a>=10){
+a -= 1;
+}
+
+stroke(red(c),green(c),blue(c),a);
+
+//     //  while(c<150){
+//          while(red(c)<150){c += 4;}
+//          while(green(c)<150){c +=4;}
+////  }
+
+//while(blue(c)>0){c -=4;}
+////  }
+
+
           if(step < waitCnt){
              step++;
           }else{
+//            background(255,255,255,0);
 
                   noFill();
-                  strokeWeight(random(1,5));
-                  stroke(red(C),green(C),blue(C),20);
+                    
+                  strokeWeight(random(5,10));
 
 
-  
+
+
           Ang1 += Rot1;
           float rx = Cx + (R1 * cos(radians(Ang1)) );
           float ry = Cy + (R1 * sin(radians(Ang1)) );
@@ -110,20 +134,44 @@ void render(){
                    ellipse(X,Y,R3,R3);
                 }
   
-           if(Ang2 >=360 && R1 < 1000){
-             Ang1 = 0;
-             Ang2 = 0;
+if(Ang2 >=360 && R1 < 500){
+
+  
+
+  
+  
+ Ang1 = 0;
+Ang2 = 0;
 //             Rot1 /= 1.5;
-             R1 += 50;
+ R1 += 10;
+//if(a > 10){
+//a -= 30;
+//}
+
+
+
+
             this.draw();
             this.render();
             }
-            
-            if(R1 >= 1000){
-              background(0,0);
+            if(R1 >= 500){
+
+              a=100;
+              Cx = random(width);
+              Cy = random(height);
+                          Ang1 = 0;
+            Ang2 = 0;
+R1 = random(10,30);
+
+//stroke(150,150,0,30);
+              this.draw();
+            this.render();
             }
 
-           
+//            for (int s=0; s<num_eraser; s++) {
+//                  erasers[s].render();
+//          }
+
          }
 }
 //------------------------------------------------------------------------------------------------------------------
@@ -135,5 +183,6 @@ void move(){
           Cx+=vx;
           Cy+=vy;
 }
-
 }
+
+
