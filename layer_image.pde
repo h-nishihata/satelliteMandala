@@ -1,15 +1,16 @@
 //  show image
-class MyLayer extends Layer {
-  
+class Layer_image extends Layer {
+//  int h;
 
-MyLayer(PApplet parent) {
+Layer_image(PApplet parent) {
           super(parent);
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void setup(){
           colorMode(HSB,360,100,100,100);
-          
+//          background(0,0,100,0);
+//          h = 60;
 //  getting image   
           double mapCenterLat = random(10.000000,90.000000);
           double mapCenterLon = random(10.000000,90.000000);
@@ -24,7 +25,7 @@ void setup(){
           if(b == null){
                 b =loadImage("sat_data.jpg"); 
            }
-          tint(60,100,100,60);
+tint(60,100,100,60);
           image(b,0,0,width,height);
           
           b.loadPixels();
@@ -33,7 +34,9 @@ void setup(){
 
 //------------------------------------------------------------------------------------------------------------------
   void draw() {
-    
-  }
+
+                 
+    }
+  
 }
 

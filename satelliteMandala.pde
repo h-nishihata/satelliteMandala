@@ -18,9 +18,6 @@ import ddf.minim.*;
           
           int num = 100;
           Pen[] pens;
-                  
-//          int num_eraser = 1;
-//          Eraser[] erasers;  
           
           int maxpal = 100;
           int numpal = 0;
@@ -35,12 +32,14 @@ void setup(){
           ellipseMode(RADIUS);
           colorMode(HSB,360,100,100,100);
           background(0,0,100);
-          frameRate(10);
+          frameRate(100);
           smooth();
           
 //  layers          
           layers = new AppletLayers(this);
-          MyLayer m = new MyLayer(this);
+          Layer_eraser e = new Layer_eraser(this);
+          Layer_image m = new Layer_image(this);
+          layers.addLayer(e);
           layers.addLayer(m);
           
 //  sounds         
@@ -65,11 +64,6 @@ void setup(){
                 
                 pens[i] = new Pen( r,cx,cy,rot1,rot2,au, (int)(random(1,500)) );
           }
-          //  create erasers    
-//      erasers = new Eraser[num_eraser];      
-//          for (int n=0; n<num_eraser; n++) {
-//                erasers[n] = new Eraser();
-//          }
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -89,9 +83,6 @@ void draw(){
                 pens[j].render();
                 pens[j].move();
           }
-//                         for (int s=0; s<num_eraser; s++) {
-//                          erasers[s].render();
-//                }
 }
 
 //------------------------------------------------------------------------------------------------------------------

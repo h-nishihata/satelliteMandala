@@ -116,7 +116,7 @@ void render(){
                 R1 += 10;
                 this.draw();
                 this.render();
-
+//drip(Cx,Cy);
           }
           
           if(R1 >= 200){
@@ -142,5 +142,40 @@ void move(){
           Cy+=vy;
  }
 }
-
+//------------------------------------------------------------------------------------------------------------------
+//void drip(float circleX,float circleY){
+//              stroke(0);
+//                      strokeWeight(2);
+// float centerX, centerY;
+//                    float r1,r2;
+//                    float angle;
+//
+//                                float Vx;
+//            float Vy;
+//            int r;
+// centerX = circleX;
+//centerY = circleY;
+//          r1 = 50;
+//          angle = 0;
+//           ellipseMode(RADIUS);
+//
+//
+//          ellipse(centerX,centerY,r1,r1);
+//          
+//
+//
+//          angle++;
+//                    r = (int)(random(1,10));
+//          float rx = centerX + (r1 * cos(radians(angle)) );
+//          float ry = centerY + (r1 * sin(radians(angle)) );
+//
+//          ellipse(rx,ry,r,r);
+//Vx = random(-10,10);
+//Vy = random(1,10);
+//
+//  
+//  centerX += Vx;
+//  centerY += Vy;
+//}
+//
 
