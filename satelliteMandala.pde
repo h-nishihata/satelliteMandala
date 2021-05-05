@@ -1,5 +1,5 @@
-//  Digital Mandala _ v029, {Software} Structures
-//  h.nishihata   9 July, 2013
+//  Digital Mandala _ v030, {Software} Structures
+//  h.nishihata   11 July, 2013
 //  wwww.nishihatahitoshi.com
 //  Falling Love with Processing
 
@@ -58,7 +58,7 @@ void setup(){
                 float r = random(8,45);
                 float cx = 50 + noise(random(width))*width;
                 float cy = 30 + noise(random(height))*height;
-                float rot1 = random(-40,40);
+                float rot1 = random(-30,30);
                 float rot2 = 0.8;
                 int au = 5;
                 
@@ -74,7 +74,6 @@ void paint(java.awt.Graphics g) {
                 super.paint(g);
           }
 }
-
 
 //------------------------------------------------------------------------------------------------------------------
 void draw(){

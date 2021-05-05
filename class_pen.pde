@@ -19,12 +19,9 @@ public class Pen{
           color c = somecolor();
           int a;
 
-         
-
 //------------------------------------------------------------------------------------------------------------------
 
 Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
-  
 //  construct
           Cx = cx;
           Cy = cy;
@@ -38,7 +35,7 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           
           waitCnt = wc;
           step = 0;
-          a = 20;
+          a = 12;
           waiting = 0;
 }
 
@@ -72,14 +69,14 @@ void draw(){
 void render(){
 
           if(a > 5) a --;
-          if(waiting < random(1,30)){
+          if(waiting < random(1,80)){
                 waiting++;
           }else{
-          if(a == 5) a = 20;
+          if(a == 5) a = 12;
           }
           stroke(hue(c),saturation(c+2)+80,brightness(c),a);
 
-          strokeWeight(random(1,5));
+          strokeWeight(random(3,8));
           noFill();
 
     if(step < waitCnt){
@@ -96,7 +93,7 @@ void render(){
                 if((Ang1 <= 360)||(Ang1 >= -360)){
                       ellipse(rx,ry,R2,R2);
                       strokeWeight(1);
-                      stroke(0,0,100,a+5);
+                      stroke(0,0,100,a+10);
                       line(Cx,Cy,rx,ry);
                 }
           }
@@ -114,21 +111,20 @@ void render(){
   
           if(Ang2 >=360 && R1 < 200){
                 c-=10;
-                if(c <= 0)c=360;
+                if(c == 0)c=360;
                 Ang1 = 0;
                 Ang2 = 0;
-                R1 += 10;
+                R1 += 20;
                 this.draw();
                 this.render();
           }
           
           if(R1 >= 200){
-//                a=20;
                 Cx = random(width);
                 Cy = random(height);
                 Ang1 = 0;
                 Ang2 = 0;
-                R1 = random(10,30);
+                R1 = random(8,45);
                 this.draw();
                 this.render();
           }
