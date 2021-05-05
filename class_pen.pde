@@ -14,6 +14,7 @@ public class Pen{
           int angleUnit;
           int waitCnt;
           int step;
+          int waiting;
 
           color c = somecolor();
           int a;
@@ -38,7 +39,7 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           waitCnt = wc;
           step = 0;
           a = 20;
-          
+          waiting = 0;
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -69,11 +70,13 @@ void draw(){
 //------------------------------------------------------------------------------------------------------------------ 
  
 void render(){
-//int col = 0;
-//if(col > 0)col += 10;
-//if(col == 0)col
+
           if(a > 5) a --;
+          if(waiting < random(1,30)){
+                waiting++;
+          }else{
           if(a == 5) a = 20;
+          }
           stroke(hue(c)-80,saturation(c+2)+80,brightness(c),a);
 
           strokeWeight(random(1,5));
@@ -135,8 +138,8 @@ if(c >= 360){c=0;}
 //------------------------------------------------------------------------------------------------------------------
 void move(){
 //  add velocity to position
-          float vx = random(-2, 2);
-          float vy = random(-1, 1);
+          float vx = random(-3, 3);
+          float vy = random(-1.5, 1.5);
           
           Cx+=vx;
           Cy+=vy;

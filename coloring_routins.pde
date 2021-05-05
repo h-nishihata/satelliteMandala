@@ -41,11 +41,11 @@ void takecolor() {
 }
 
 //------------------------------------------------------------------------------------------------------------------
-void fading(int h, int s, int b) {
+void fading(int h, int s, int b, float a) {
   
           colorMode(HSB, 360, 100, 100, 100);
           noStroke();
-          fill(h, s, b, 0.5);
+          fill(h, s, b, a);
           rectMode(CORNER);
           rect(0, 0, width, height);
 }

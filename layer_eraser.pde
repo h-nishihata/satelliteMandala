@@ -7,8 +7,10 @@ class Layer_eraser extends Layer {
           int h;
           int s;
           int b;
+          float a;
           int step;
           int step_2;
+          int step_3;
           int wc;
 
 //------------------------------------------------------------------------------------------------------------------  
@@ -20,12 +22,14 @@ Layer_eraser(PApplet parent) {
   void setup() {
     
           colorMode(RGB,100);
-          wc = 500;
+          wc = 100;
           step = 0;
           step_2 = 0;
+          step_3 = 0;
           h = 0;
           s = 0;
           b = 100;
+          a = 0.5;
 
           Cx = 50 + noise(random(width))*width;
           Cy = 30 + noise(random(height))*height;
@@ -44,30 +48,39 @@ void draw() {
   
           noStroke();
           noFill();
-          //  day >> sunset
+//  daytime(0,0,100) >> sunset(0,100,100) 
           if(step < wc){
-                      step++;
-                }else{
+                step++;
+          }else{
           if (s < 100) {
-                fading(h, s, b);
+                fading(h, s, b, a);
                 s ++;
           }
           }
-
-                //  sunset >> night
-                
-                  if(s == 100 && b > 0){
-                      fading(h, s, b);
-                      b--;
-                }
-                if(b==0 && h<=240){
-                  if(step_2 < wc){
-                      step_2++;
-                }else{
-                h++;
-                s--;
-                }
+//  sunset(0,100,100) >> night(0,100,0)
+          if(s==100 && b>0 && s>0){
+          if(step_2 < wc){
+                step_2++;
+          }else{
+                fading(h, s, b, a);
+                s--;  
+                b--;
+                a =1;
           }
+          }
+//  night(240,0,100) >> dawn(0,0,100)
+          if(h ==240 && s==0 && h>0){
+          if(step_3 < wc){
+                step_3++;
+          }else{
+                fading(h, s, b, a);   
+                h=s=0;
+                b=100;
+                a =0.5;
+          } 
+          }
+
+          
           Ang1 += Rot1;
           float rx = Cx + (R1 * cos(radians(Ang1)) );
           float ry = Cy + (R1 * sin(radians(Ang1)) );
