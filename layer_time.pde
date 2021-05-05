@@ -39,7 +39,7 @@ void setup() {
           h = t = 0;
           s = 30;
           b = 100;
-          a = 0.6;
+          a = 0.8;
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -49,13 +49,14 @@ void draw() {
                 waiting_1++;
           }
           if(waiting_1 == 2){
-                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                if(epx+epy+epz+emx+emy+emz > 0.4){  
                       t=(int)random(0,60);
                 }else{
                       t=(int)random(120,360);
                 }
           }                
           if(waiting_1 >= 10){
+                h = t;
                 fading(h, s, b, a);
                 end_1 = true;
                 changeSound(0,0);   
@@ -67,7 +68,7 @@ void draw() {
                 if(waiting_2 >= 1300) changeSound(0,2);
           }
           if(waiting_2 == 1900){  
-                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                if(epx+epy+epz+emx+emy+emz > 0.4){  
                       t=(int)random(0,60);
                 }else{
                       t=(int)random(120,360);
@@ -86,7 +87,7 @@ void draw() {
                 waiting_3++;
           }
           if(waiting_3 == 1900){
-                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                if(epx+epy+epz+emx+emy+emz > 0.4){  
                       t=(int)random(0,60);
                 }else{
                       t=(int)random(120,360);
@@ -105,7 +106,7 @@ void draw() {
                 waiting_4++;
           }
           if(waiting_4 == 1900){
-                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                if(epx+epy+epz+emx+emy+emz > 0.4){  
                       t=(int)random(0,60);
                 }else{
                       t=(int)random(120,360);
@@ -124,7 +125,7 @@ void draw() {
                 waiting_5++;
           }
           if(waiting_5 == 1900){
-                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                if(epx+epy+epz+emx+emy+emz > 0.4){  
                       t=(int)random(0,60);
                 }else{
                       t=(int)random(120,360);
@@ -143,7 +144,7 @@ void draw() {
                 waiting_6++;
           }
           if(waiting_6 == 1900){
-                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                if(epx+epy+epz+emx+emy+emz > 0.4){  
                       t=(int)random(0,60);
                 }else{
                       t=(int)random(120,360);

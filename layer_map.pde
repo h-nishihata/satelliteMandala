@@ -35,7 +35,7 @@ void draw() {
                             b =loadImage(i+".png");
                             i++;
                       }
-                background(60,100,100,0);      
+                background(60,100,100,0);
                 tint(60,100,100,100);
                 image(b, 0, 0, width, height);
                 
@@ -45,7 +45,7 @@ void draw() {
           
           if(waiting_6 > 50 && waiting_7 < 1){
                 loadPixels();
-                for (int s=0;s<500;s++) {
+                for (int s=0;s<50;s++) {
                       int x = int(random(screen.width));
                       int y = int(random(screen.height));
                       int pos = (y * b.width) + x;

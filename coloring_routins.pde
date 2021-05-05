@@ -12,7 +12,7 @@ void takecolor() {
                     x = int(random(b.width));
                     y = int(random(b.height));
 
-                    int pos = (y * b.height) + x;
+                    int pos = (y * b.width) + x;
                     color c = b.pixels[pos];
                         
                     boolean exists = false;

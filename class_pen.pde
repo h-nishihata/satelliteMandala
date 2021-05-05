@@ -50,7 +50,7 @@ void draw(){
                 if(otherPen != this){
                       float dis = dist(Cx,Cy,otherPen.Cx,otherPen.Cy);
                       if((dis - R1 - otherPen.R1) < 0){
-                            otherPen.c -= 10;
+                            otherPen.c += 100;
                             touching = true;
                             break;
                       }
@@ -102,12 +102,12 @@ void render(){
          
           if(temp != mainAngle) {
                 if((Ang1 < 360)||(Ang1 > -360)){
-                      stroke(hue(c),random(0,30),brightness(c),a);
+                      stroke(hue(c),saturation(c+2),brightness(c),a);
                       if(c<360)c++; else c=0;
                       strokeWeight(random(3,10));       
                       ellipse(rx,ry,R2,R2);
                       strokeWeight(random(1,3));
-                      stroke(0,0,100,random(0,8));
+                      stroke(0,0,80,random(0,6));
                       line(Cx_A,Cy,rx,ry);
                       line(Cx_B,Cy,rx,ry);     
                       }
