@@ -12,8 +12,8 @@ class Layer_eraser extends Layer {
           int waiting_2;
           int waiting_3;
           boolean finish_1 = false;
-boolean finish_2 = false;
-boolean finish_3 = false;
+          boolean finish_2 = false;
+          boolean finish_3 = false;
 //------------------------------------------------------------------------------------------------------------------  
 Layer_eraser(PApplet parent) {
           super(parent);
@@ -50,7 +50,7 @@ Layer_eraser(PApplet parent) {
 void draw() {
 
 //  daytime(0,0,100) >> sunset(0,100,100) 
-          if(waiting < 100){
+          if(waiting < 1000){
                 waiting++;
           }else{
                 fading(h, s, b, a);
@@ -60,7 +60,7 @@ void draw() {
           }
 //  sunset(0,100,100) >> night(0,0,0)
           if(finish_1 == true){
-          if(waiting_2 < 100){
+          if(waiting_2 < 1000){
                 waiting_2++;
           }else{  
                 fading(h, s, b, a);
@@ -73,7 +73,7 @@ void draw() {
           
 //  night(0,0,0) >> dawn(0,0,100)
           if(finish_2 == true){
-          if(waiting_3 < 100){
+          if(waiting_3 < 1000){
                 waiting_3++;
           }else{
                 fading(h, s, b, a);   
@@ -89,6 +89,7 @@ void draw() {
             waiting = waiting_2 = waiting_3 = 0;
             finish_1 = finish_2 = finish_3 = false;
           }
+          
           Ang1 += Rot1;
           float rx = Cx + (R1 * cos(radians(Ang1)) );
           float ry = Cy + (R1 * sin(radians(Ang1)) );
