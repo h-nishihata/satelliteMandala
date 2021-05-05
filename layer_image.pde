@@ -1,3 +1,4 @@
+int i = 1;
 class Layer_image extends Layer {
 
 //------------------------------------------------------------------------------------------------------------------
@@ -17,8 +18,9 @@ void setup() {
           int mapHeight = height;
           gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
       
-          b = gMapper.getMap();
-          if(b == null)b =loadImage("sat_data.jpg"); 
+//          b = gMapper.getMap();
+//          if(b == null)
+          b =loadImage("0.png"); 
           tint(60, 100, 100, 50);
           image(b, 0, 0, width, height);
       
@@ -28,7 +30,8 @@ void setup() {
 
 //------------------------------------------------------------------------------------------------------------------
 void draw() {
-          if(waiting_5 > 0 && waiting_5 < 100){
+ 
+          if(waiting_5 > 50 && waiting_6 < 100){
                 loadPixels();
                 for (int s=0;s<1000;s++) {
                       int x = int(random(screen.width));
@@ -40,10 +43,15 @@ void draw() {
           }
           
           
-          if(waiting_6 == 1){         
-                b =loadImage("sat_data.jpg"); 
+          if(waiting_7 == 1){         
+                b =loadImage(i+".png");
+                if(b==null){
+                      i=0;
+                      b =loadImage(i+".png");
+                }
 //                tint(60, 100, 100, 50);
                 image(b, 0, 0, width, height);
+                i++;
                 b.loadPixels();
                 takecolor();
           }

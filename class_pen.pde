@@ -70,12 +70,14 @@ void draw(){
                 int i = soundType[0];
                 int i_ = soundType[1];
                 int t = (int)(random(0,10000));
-                if(t == 0){
+                if(t == 0 && i != 0){
                       sample[i].trigger();
+                      fill(#FFFFFF,30);
+                      ellipse(Cx,Cy,R1,R1);
                 }
-                if(t == 1){
+                if(t == 1 && i != 0){
                       sample[i_].trigger();
-                      fill(#FFFFFF);
+                      fill(#FFFFFF,30);
                       ellipse(Cx,Cy,R1,R1);
                 }
           }

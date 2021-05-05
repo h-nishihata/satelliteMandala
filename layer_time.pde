@@ -46,17 +46,17 @@ void setup() {
 //------------------------------------------------------------------------------------------------------------------
 void draw() {
 //  >> sunset[red](0,100,100) 
-          if(waiting_1 < 50){
+          if(waiting_1 < 2000){
                 waiting_1++;
           }else{
                 fading(h, s, b, a);
                 s =100;
                 end_1 = true;
-                changeSound(0,1);          //  空白は必ず第１引数
+                changeSound(0,1);
           }
 //  sunset(0,100,100) >> night[black](0,0,0)
           if(end_1 == true){
-          if(waiting_2 < 5000){
+          if(waiting_2 < 2000){
                 waiting_2++;
                 if(waiting_2 >= 1500) changeSound(1,2);
           }else{  
@@ -70,7 +70,7 @@ void draw() {
           }
 //  night(0,0,0) >> dawn[cyan](180,100,100)
           if(end_2 == true){
-          if(waiting_3 < 5000){
+          if(waiting_3 < 2000){
                 waiting_3++;
           }else{
                 fading(h, s, b, a);   
@@ -84,7 +84,7 @@ void draw() {
           }
 //  dawn(180,100,100) >> morning[yellow](60,100,100)
           if(end_3 == true){
-          if(waiting_4 < 5000){
+          if(waiting_4 < 2000){
                 waiting_4++;
           }else{
                 fading(h, s, b, a);   
@@ -95,7 +95,7 @@ void draw() {
           }
 //  morning(60,100,100) >> midday[white](0,0,100)
           if(end_4 == true){
-          if(waiting_5 < 5000){
+          if(waiting_5 < 2000){
                 waiting_5++;
           }else{
                 fading(h, s, b, a);   
@@ -109,7 +109,7 @@ void draw() {
           }
 //  midday >> afternoon[violet](300,100,100)
           if(end_5 == true){
-          if(waiting_6 < 5000){
+          if(waiting_6 < 2000){
                 waiting_6++;
           }else{
                 fading(h, s, b, a);   
@@ -122,7 +122,7 @@ void draw() {
           }          
           
           if(end_6 == true){
-          if(waiting_7 < 5000){
+          if(waiting_7 < 2000){
                 waiting_7++;
           }else{
                 waiting_1 = waiting_2 = waiting_3 = waiting_4 = waiting_5 = waiting_6 = waiting_7 = 0;
