@@ -11,8 +11,6 @@ void setup(){
           pens = new Pen[num];
           for(int i=0; i<num; i++){
                 float r = random(6,45);
-//                float cx = 50 + noise(random(width))*width;
-//                float cy = 30 + noise(random(height))*height;
                 float cx = random(width);
                 float cy = random(height);
                 float rot1 = random(-8,8);
@@ -30,5 +28,5 @@ void draw(){
                 pens[j].render();
                 pens[j].move();
           }
-}
+ }
 }

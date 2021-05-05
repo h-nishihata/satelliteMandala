@@ -18,8 +18,6 @@ public class Pen{
 
           color c = somecolor();
           int a;
-//          int num = 1;
-          Spot sp; 
           
 //------------------------------------------------------------------------------------------------------------------
 Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
@@ -52,37 +50,29 @@ void draw(){
                 if(otherPen != this){
                       float dis = dist(Cx,Cy,otherPen.Cx,otherPen.Cy);
                       if((dis - R1 - otherPen.R1) < 0){
-//                            float midx = (Cx + otherPen.Cx)/2;
-//                            float midy = (Cy + otherPen.Cy)/2;
                             otherPen.c += 50;
-//                            int r =(int)(random(0,100));
-//                            if(r==1){
-//                  sp = new Spot(midx,midy);
-//                            }
                             touching = true;
                             break;
                       }
                 }
           }
-         
+
           
           if(touching){
                 int i = soundType[0];
                 int i_ = soundType[1];
-                int t = (int)(random(0,10000));
+                int t = (int)(random(0,20000));
                 if(t == 0 && i != 0){
                       sample[i].trigger();
                       fill(#FFFFFF,30);
                       ellipse(Cx,Cy,R1,R1);
                 }
-                if(t == 1 && i != 0){
+                if(t == 1 && i_ != 0){
                       sample[i_].trigger();
                       fill(#FFFFFF,30);
                       ellipse(Cx,Cy,R1,R1);
                 }
-          }
-          
-          
+          }     
 }
 
 //------------------------------------------------------------------------------------------------------------------ 

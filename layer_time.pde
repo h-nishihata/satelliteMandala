@@ -52,13 +52,13 @@ void draw() {
                 fading(h, s, b, a);
                 s =100;
                 end_1 = true;
-                changeSound(0,1);
+                changeSound(0,0);
           }
 //  sunset(0,100,100) >> night[black](0,0,0)
           if(end_1 == true){
           if(waiting_2 < 2000){
                 waiting_2++;
-                if(waiting_2 >= 1500) changeSound(1,2);
+                if(waiting_2 >= 1300) changeSound(0,2);
           }else{  
                 fading(h, s, b, a);
                 s=0;  

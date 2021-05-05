@@ -26,12 +26,15 @@ import ddf.minim.*;
           PImage b;
           
           Minim minim;
+//          AudioPlayer audio;
           AudioSample[] sample;
           int numsound = 5;
           int[] soundType = new int[numsound];
           
-          int num = 50;
+          int num = 100;
           Pen[] pens;
+          
+          Spot[] sp; 
           
           int maxpal = 100;
           int numpal = 0;
@@ -59,8 +62,8 @@ void setup(){
           layers = new AppletLayers(this);
           Layer_pen p = new Layer_pen(this);
           Layer_time t = new Layer_time(this);
-          Layer_pen2 p_ = new Layer_pen2(this);
-          Layer_image m = new Layer_image(this);
+          Layer_particle p_ = new Layer_particle(this);
+          Layer_map m = new Layer_map(this);
           Layer_mask k = new Layer_mask(this);
 
           layers.addLayer(p);  
@@ -72,13 +75,12 @@ void setup(){
 //  sounds         
           minim = new Minim(this);
           sample = new AudioSample[numsound];
+//          audio = minim.loadFile("01.mp3");
           sample[0] = minim.loadSample("empty.mp3");
-          sample[1] = minim.loadSample("01.mp3");
-          sample[2] = minim.loadSample("02.mp3");
-          sample[3] = minim.loadSample("03.mp3");
-          sample[4] = minim.loadSample("04.mp3");
-          
-
+          sample[1] = minim.loadSample("01.mp3"); //  地鳴り
+          sample[2] = minim.loadSample("02.mp3"); //  ピン
+          sample[3] = minim.loadSample("03.mp3"); //  キーン
+          sample[4] = minim.loadSample("04.mp3"); //  シュイーン
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -96,16 +98,15 @@ void draw(){
 
 //------------------------------------------------------------------------------------------------------------------
 void stop(){
-          for(int i=0; i<numsound; i++){
+            for(int i=0; i<numsound; i++){
                 sample[i].close();
-                minim.stop();
-                super.stop();
           }
+          minim.stop();
+          super.stop();
 }
 
+//  SCREEN SAVER
 //------------------------------------------------------------------------------------------------------------------
-//  screen saver
-
 //void mouseMoved(){
 //        exit();
 //}

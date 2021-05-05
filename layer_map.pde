@@ -1,8 +1,8 @@
 int i = 1;
-class Layer_image extends Layer {
+class Layer_map extends Layer {
 
 //------------------------------------------------------------------------------------------------------------------
-Layer_image(PApplet parent) {
+Layer_map(PApplet parent) {
     super(parent);
 }
 
@@ -10,13 +10,13 @@ Layer_image(PApplet parent) {
 void setup() {
           colorMode(HSB, 360, 100, 100, 100);
       
-          double mapCenterLat = random(10.000000, 90.000000);
-          double mapCenterLon = random(10.000000, 90.000000);
-          int zoomLevel = 10;
-          String mapType = GoogleMapper.MAPTYPE_SATELLITE;
-          int mapWidth = width;   
-          int mapHeight = height;
-          gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
+//          double mapCenterLat = random(10.000000, 90.000000);
+//          double mapCenterLon = random(10.000000, 90.000000);
+//          int zoomLevel = 10;
+//          String mapType = GoogleMapper.MAPTYPE_SATELLITE;
+//          int mapWidth = width;   
+//          int mapHeight = height;
+//          gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
       
 //          b = gMapper.getMap();
 //          if(b == null)
@@ -31,7 +31,7 @@ void setup() {
 //------------------------------------------------------------------------------------------------------------------
 void draw() {
  
-          if(waiting_5 > 50 && waiting_6 < 100){
+          if(waiting_5 > 50 && waiting_7 < 1){
                 loadPixels();
                 for (int s=0;s<1000;s++) {
                       int x = int(random(screen.width));
@@ -43,13 +43,13 @@ void draw() {
           }
           
           
-          if(waiting_7 == 1){         
+          if(waiting_7 == 1){
+                if(i == 4) i=0;         
                 b =loadImage(i+".png");
-                if(b==null){
-                      i=0;
-                      b =loadImage(i+".png");
-                }
-//                tint(60, 100, 100, 50);
+//                if(b==null){
+//                      i=0;
+//                      b =loadImage(i+".png");
+//                }
                 image(b, 0, 0, width, height);
                 i++;
                 b.loadPixels();
