@@ -1,9 +1,3 @@
-          double mapCenterLat;
-          double mapCenterLon;
-          int    zoomLevel;
-          String mapType;
-          int    mapWidth;   
-          int    mapHeight;
 class Layer_image extends Layer {
 
 //------------------------------------------------------------------------------------------------------------------
@@ -15,12 +9,12 @@ Layer_image(PApplet parent) {
 void setup() {
           colorMode(HSB, 360, 100, 100, 100);
       
-          mapCenterLat = random(10.000000, 90.000000);
-          mapCenterLon = random(10.000000, 90.000000);
-          zoomLevel = 10;
-          mapType = GoogleMapper.MAPTYPE_SATELLITE;
-          mapWidth = width;   
-          mapHeight = height;
+          double mapCenterLat = random(10.000000, 90.000000);
+          double mapCenterLon = random(10.000000, 90.000000);
+          int zoomLevel = 10;
+          String mapType = GoogleMapper.MAPTYPE_SATELLITE;
+          int mapWidth = width;   
+          int mapHeight = height;
           gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
       
           b = gMapper.getMap();
@@ -47,16 +41,7 @@ void draw() {
           
           
           if(waiting_6 == 1){         
-                mapCenterLat = random(10.000000, 90.000000);
-                mapCenterLon = random(10.000000, 90.000000);
-                zoomLevel = 10;
-                mapType = GoogleMapper.MAPTYPE_SATELLITE;
-                mapWidth = width;   
-                mapHeight = height;
-                gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
-            
-                b = gMapper.getMap();
-                if(b == null)b =loadImage("sat_data.jpg"); 
+                b =loadImage("sat_data.jpg"); 
 //                tint(60, 100, 100, 50);
                 image(b, 0, 0, width, height);
                 b.loadPixels();

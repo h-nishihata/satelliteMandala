@@ -105,11 +105,12 @@ void stop(){
 
 //------------------------------------------------------------------------------------------------------------------
 //  screen saver
-void mouseMoved(){
-  exit();
-}
 
-void keyPressed(){
-  exit();
-}
+//void mouseMoved(){
+//        exit();
+//}
+//
+//void keyPressed(){
+//        exit();
+//}
 
