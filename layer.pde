@@ -18,11 +18,18 @@ void setup(){
           
           gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
 
-//          b = gMapper.getMap();
-          b =loadImage("sat_data.jpg");
+          b = gMapper.getMap();
+
+          
+          if(b == null){
+                     b =loadImage("sat_data.jpg"); 
+     }else{
+        
+    
 
           tint(60,100,100,60);
           image(b,0,0,width,height);
+     }
           b.loadPixels();
                 
           takecolor();

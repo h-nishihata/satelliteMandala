@@ -79,11 +79,10 @@ void draw(){
  
 void render(){
   
-          if(a>=10){
-                a -= 1;
-          }
+          if(a > 10) a -= 1;
+          if(a == 10) a += 1;
           stroke(hue(c),saturation(c+2),brightness(c),a);
-          strokeWeight(random(5,10));
+          strokeWeight(random(1,8));
           noFill();
 
     if(step < waitCnt){
@@ -99,9 +98,9 @@ void render(){
           if(temp != mainAngle) {
                 if(Ang1 <= 360){
                       ellipse(rx,ry,R2,R2);
-                                            strokeWeight(1);
-                                            stroke(random(0,360),50,100);
-                                            line(Cx,Cy,rx,ry);
+                      strokeWeight(1);
+                      stroke(random(0,360),50,100,a+20);
+                      line(Cx,Cy,rx,ry);
                 }
           }
                 
@@ -115,7 +114,9 @@ void render(){
                 ellipse(X,Y,R3,R3);
           }
   
-          if(Ang2 >=360 && R1 < 500){
+          if(Ang2 >=360 && R1 < 300){
+                              c+=50;
+                              if(c == 360 && c>0){c-=50;}
                 Ang1 = 0;
                 Ang2 = 0;
                 R1 += 10;
@@ -123,7 +124,7 @@ void render(){
                 this.render();
           }
           
-          if(R1 >= 500){
+          if(R1 >= 300){
                 a=100;
                 Cx = random(width);
                 Cy = random(height);

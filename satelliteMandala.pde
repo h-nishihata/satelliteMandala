@@ -29,7 +29,7 @@ import ddf.minim.*;
 //------------------------------------------------------------------------------------------------------------------
 void setup(){
 
-          size(1000,1000,P3D);
+          size(screen.width,screen.height,P3D);
           ellipseMode(RADIUS);
           colorMode(HSB,360,100,100,100);
           background(0,0,100);
