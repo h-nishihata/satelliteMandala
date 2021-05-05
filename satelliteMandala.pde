@@ -1,5 +1,5 @@
-//  Digital Mandala _ v030, {Software} Structures
-//  h.nishihata   11 July, 2013
+//  Digital Mandala _ v033, {Software} Structures
+//  h.nishihata   22 July, 2013
 //  wwww.nishihatahitoshi.com
 //  Falling Love with Processing
 
@@ -23,7 +23,6 @@ import ddf.minim.*;
           int numpal = 0;
           color[] goodcolor = new color[maxpal];
 
-
 //  MAIN
 //------------------------------------------------------------------------------------------------------------------
 void setup(){
@@ -39,8 +38,10 @@ void setup(){
           layers = new AppletLayers(this);
           Layer_eraser e = new Layer_eraser(this);
           Layer_image m = new Layer_image(this);
+          Layer_mask k = new Layer_mask(this);
           layers.addLayer(e);
           layers.addLayer(m);
+          layers.addLayer(k);
           
 //  sounds         
           minim = new Minim(this);
@@ -56,8 +57,10 @@ void setup(){
           for(int i=0; i<num; i++){
             
                 float r = random(10,45);
-                float cx = 50 + noise(random(width))*width;
-                float cy = 30 + noise(random(height))*height;
+//                float cx = 50 + noise(random(width))*width;
+//                float cy = 30 + noise(random(height))*height;
+                float cx = random(width);
+                float cy = random(height);
                 float rot1 = random(-10,10);
                 float rot2 = 0.8;
                 int au = 5;
@@ -79,6 +82,7 @@ void paint(java.awt.Graphics g) {
 void draw(){
 //  move pens  
           for(int j=0; j<num; j++){
+            pens[j].draw();
                 pens[j].render();
                 pens[j].move();
           }
@@ -87,9 +91,9 @@ void draw(){
 //------------------------------------------------------------------------------------------------------------------
 void stop(){
           for(int i=0; i<numsound; i++){
-                  sample[i].close();
-                  minim.stop();
-                  super.stop();
+                sample[i].close();
+                minim.stop();
+                super.stop();
           }
 }
 
