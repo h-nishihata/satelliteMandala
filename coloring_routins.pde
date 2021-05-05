@@ -39,3 +39,6 @@ void takecolor() {
                 goodcolor[x]=#FFFFFF;
          }
 }
+
+// h.nishihata   July, 2013
+// Tokyo, Japan

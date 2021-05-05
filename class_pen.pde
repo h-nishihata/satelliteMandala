@@ -17,10 +17,8 @@ public class Pen{
 
           color c = somecolor();
           int a;
-          
-//  erasers
-//          int num_eraser = 1;
-//          Eraser[] erasers = new Eraser[num_eraser];          
+
+         
 
 //------------------------------------------------------------------------------------------------------------------
 
@@ -31,8 +29,8 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           Cy = cy;
           Ang1 = Ang2 =0;
           R1 = r;
-          R2 = random(r/4,r/1.8);
-          R3 = random(r/8,r/4);
+          R2 = random(r/6,r/1.8);
+          R3 = random(r/10,r/4);
           Rot1 = rot1;
           Rot2 = rot2;
           angleUnit = au;
@@ -40,12 +38,8 @@ Pen(float r, float cx, float cy, float rot1, float rot2, int au, int wc){
           waitCnt = wc;
           step = 0;
           a = 255;
+          
 
-//  create erasers          
-//          for (int n=0; n<num_eraser; n++) {
-//                erasers[n] = new Eraser();
-//          }
-              
 }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -68,9 +62,7 @@ void draw(){
                 }
           }
           if(touching){
-//              for(int i=0; i<numsound; i++){ 
                       sample[int(random(0,numsound))].trigger();
-//              }
           }
           
 }
@@ -96,7 +88,7 @@ void render(){
           int temp = (int)(Ang1) / angleUnit;
                 
           if(temp != mainAngle) {
-                if(Ang1 <= 360){
+                if((Ang1 <= 360)||(Ang1 >= -360)){
                       ellipse(rx,ry,R2,R2);
                       strokeWeight(1);
                       stroke(random(0,360),50,100,a+20);
@@ -112,19 +104,22 @@ void render(){
           
           if(Ang1 >= 360 && Ang2 <= 360){
                 ellipse(X,Y,R3,R3);
+                line(rx,ry,X,Y);
           }
   
-          if(Ang2 >=360 && R1 < 300){
-                              c+=50;
-                              if(c == 360 && c>0){c-=50;}
+          if(Ang2 >=360 && R1 < 200){
+                c+=50;
+                if(c == 360 && c>0) c-=50;
+                
                 Ang1 = 0;
                 Ang2 = 0;
                 R1 += 10;
                 this.draw();
                 this.render();
+
           }
           
-          if(R1 >= 300){
+          if(R1 >= 200){
                 a=100;
                 Cx = random(width);
                 Cy = random(height);
@@ -134,12 +129,7 @@ void render(){
                 this.draw();
                 this.render();
           }
-
-//            for (int s=0; s<num_eraser; s++) {
-//                  erasers[s].render();
-//          }
-
-    }
+  }
 }
 
 //------------------------------------------------------------------------------------------------------------------

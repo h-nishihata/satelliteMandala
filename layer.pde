@@ -1,6 +1,8 @@
 //  show image
 class MyLayer extends Layer {
-          MyLayer(PApplet parent) {
+  
+
+MyLayer(PApplet parent) {
           super(parent);
 }
 
@@ -19,21 +21,14 @@ void setup(){
           gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
 
           b = gMapper.getMap();
-
-          
           if(b == null){
-                     b =loadImage("sat_data.jpg"); 
-     }else{
-        
-    
-
+                b =loadImage("sat_data.jpg"); 
+           }
           tint(60,100,100,60);
           image(b,0,0,width,height);
-     }
+          
           b.loadPixels();
-                
           takecolor();
-
 }
 
 //------------------------------------------------------------------------------------------------------------------
