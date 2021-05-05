@@ -66,31 +66,21 @@ void draw(){
                             touching = true;
                             break;
                       }
-//                      if(dis < 0){
-//                            float midx = (Cx + otherPen.Cx)/2;
-//                            float midy = (Cy + otherPen.Cy)/2;
-//                            float temp5[] = screenToAngle(midx,midy);
-//                            float temp6[] = angleToSphere(temp5[0],temp5[1]);
-//                            fill(#000000);
-//                            ellipse(temp6[0],temp6[1],100,100);                            
-//                      }
                 }
           }
           
           if(touching){
                 int i = soundType[0];
                 int i_ = soundType[1];
-                int t = (int)(random(0,300));
+                int t = (int)(random(0,100));
                 if(t == 1){
                       sample[i].trigger();
                 }
-                int t_ = (int)(random(0,300));
+                int t_ = (int)(random(0,100));
                 if(t_ == 1){
                       sample[i_].trigger();
                 }
           }
-          
-          
 }
 
 //------------------------------------------------------------------------------------------------------------------ 

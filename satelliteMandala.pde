@@ -14,8 +14,8 @@ import ddf.minim.*;
           
           Minim minim;
           AudioSample[] sample;
-          int numsound = 4;
-          int[] soundType = new int[numsound];
+          int numsound = 3;
+          int[] soundType = new int[3];
           
           int num = 200;
           Pen[] pens;
@@ -50,7 +50,6 @@ void setup(){
           sample[0] = minim.loadSample("empty.mp3");
           sample[1] = minim.loadSample("b_014.mp3");
           sample[2] = minim.loadSample("b_070.mp3");
-          sample[3] = minim.loadSample("b_008.mp3");
           
 //  arrange linearly          
           pens = new Pen[num];
