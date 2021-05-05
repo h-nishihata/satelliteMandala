@@ -1,40 +1,37 @@
+//  show image
 class MyLayer extends Layer {
+          MyLayer(PApplet parent) {
+          super(parent);
+}
 
-  MyLayer(PApplet parent) {
-    super(parent); // This is necessary!
-  }
+//------------------------------------------------------------------------------------------------------------------
 void setup(){
-colorMode(RGB,100);
-//background(#998c3e,50);
+          colorMode(RGB,100);
+          
+//  getting image   
+          double mapCenterLat = random(10.000000,90.000000);
+          double mapCenterLon = random(10.000000,90.000000);
+          int    zoomLevel = 10;
+          String mapType = GoogleMapper.MAPTYPE_SATELLITE;
+          int    mapWidth = width;   
+          int    mapHeight = height;
+          
+          gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
+
+//          b = gMapper.getMap();
+          b =loadImage("sat_data.jpg");
+
+          tint(200,200,0,60);
+          image(b,0,0,width,height);
+          b.loadPixels();
+                
+          takecolor();
 
 }
 
+//------------------------------------------------------------------------------------------------------------------
   void draw() {
-         
-//background(150,150,0,150);
-//   int x = int(random(width));
-//int y = int(random(height));
-    // clear the background every time, but be transparent
-    // now draw something
-
- for(int j=0; j<num; j++){
-
-//int x = int(random(width));
-//int y = int(random(height));
-//fill(0,0,200);
-//rect(x,y,50,50);
-
-                pens[j].render();
-                
-                pens[j].move();
-
-
-          }
-//if(pens[1].R1>40){
-//background(255,255,255,0);
-//
-//}
-
+    
   }
 }
 

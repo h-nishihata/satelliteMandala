@@ -1,28 +1,28 @@
-import com.nootropic.processing.layers.*;
-AppletLayers layers;
-
-//  Digital Mandala _ v014, {Software} Structures
-//  h.nishihata   June,2013
+//  Digital Mandala _ v019, {Software} Structures
+//  h.nishihata   25 June,2013
 //  wwww.nishihatahitoshi.com
-//  Built with Processing 2.0 b9
+//  Falling Love with Processing
 
 //  dimensions
-//import ddf.minim.*;
-//
-//Minim minim;
-//AudioSample[] sample;
-//int numsound = 3;
+import com.nootropic.processing.layers.*;
+import ddf.minim.*;
 
-GoogleMapper gMapper;
-PImage b;
-
-int num = 100;
-Pen[] pens;
-
-int maxpal = 100;
-int numpal = 0;
-
-color[] goodcolor = new color[maxpal];
+          AppletLayers layers;
+          
+          GoogleMapper gMapper;
+          PImage b;
+          
+          Minim minim;
+          AudioPlayer audio;
+          AudioSample[] sample;
+          int numsound = 20;
+          
+          int num = 100;
+          Pen[] pens;
+          
+          int maxpal = 100;
+          int numpal = 0;
+          color[] goodcolor = new color[maxpal];
 
 
 //  MAIN
@@ -31,38 +31,25 @@ void setup(){
 
           size(1000,1000,P3D);
           ellipseMode(RADIUS);
-//          colorMode(RGB,100);
-//          background(255,255,255,0);
-          frameRate(300);
+          colorMode(RGB,100);
+          background(255,255,255);
+          frameRate(10);
           smooth();
-            layers = new AppletLayers(this);
-MyLayer m = new MyLayer(this);
-  layers.addLayer(m);
-
-//  getting image   
-          double mapCenterLat = random(10.000000,90.000000);
-          double mapCenterLon = random(10.000000,90.000000);
-          int    zoomLevel = 10;
-          String mapType = GoogleMapper.MAPTYPE_SATELLITE;
-          int    mapWidth = width;   
-          int    mapHeight = height;
           
-                gMapper  = new GoogleMapper(mapCenterLat, mapCenterLon, zoomLevel, mapType, mapWidth, mapHeight);
-//                b = gMapper.getMap();
-//                tint(200,200,0);
-
-                                b =loadImage("sat_data.jpg");
-                image(b,0,0,width,height);
-                b.loadPixels();
-                
-          takecolor();
+//  layers          
+          layers = new AppletLayers(this);
+          MyLayer m = new MyLayer(this);
+          layers.addLayer(m);
           
 //  sounds         
-//          minim = new Minim(this);
-//          sample = new AudioSample[numsound];
-//          sample[0] = minim.loadSample("b_070.mp3");
-//          sample[1] = minim.loadSample("b_040.mp3");
-//          sample[2] = minim.loadSample("b_006.mp3");
+          minim = new Minim(this);
+          audio = minim.loadFile("background.mp3");
+          audio.loop();
+          sample = new AudioSample[numsound];
+          sample[0] = minim.loadSample("b_070.mp3");
+          for(int s=1; s<numsound; s++){
+                sample[s] = minim.loadSample("empty.mp3");
+          }
           
 //  arrange linearly          
           pens = new Pen[num];
@@ -78,28 +65,32 @@ MyLayer m = new MyLayer(this);
                 pens[i] = new Pen( r,cx,cy,rot1,rot2,au, (int)(random(1,500)) );
           }
 }
+
+//------------------------------------------------------------------------------------------------------------------
 void paint(java.awt.Graphics g) {
-  // This method MUST be present in your sketch for layers to be rendered!
-  if (layers != null) {
-    layers.paint(this);
-  } else {
-    super.paint(g);
-  }
+          if (layers != null) {
+                layers.paint(this);
+          } else {
+                super.paint(g);
+          }
 }
 
 
 //------------------------------------------------------------------------------------------------------------------
 void draw(){
 //  move pens  
-         
+          for(int j=0; j<num; j++){
+                pens[j].render();
+                pens[j].move();
+          }
 }
 
 //------------------------------------------------------------------------------------------------------------------
-//void stop(){
-//          for(int i=0; i<numsound; i++){
-//                  sample[i].close();
-//                  minim.stop();
-//                  super.stop();
-//          }
-//}
+void stop(){
+          for(int i=0; i<numsound; i++){
+                  sample[i].close();
+                  minim.stop();
+                  super.stop();
+          }
+}
 

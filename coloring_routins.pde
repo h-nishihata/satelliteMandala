@@ -1,12 +1,10 @@
+
 //  COLORING ROUTINES
-
-
 color somecolor() {
           return goodcolor[int(random(numpal))];
 }
 
 //------------------------------------------------------------------------------------------------------------------
-
 void takecolor() {
   
           loadPixels();
@@ -22,29 +20,22 @@ void takecolor() {
                     boolean exists = false;
           
                     for (int n=0;n<numpal;n++) {
-                      
-                                  if (c==goodcolor[n]) {
-                                      exists = true;
-                                      break;
-                                  }
-                                  
+                          if (c==goodcolor[n]) {
+                                    exists = true;
+                                    break;
+                          }    
                     }
-                
                 
                     if (!exists) {
-                  
-                                  if (numpal<maxpal) {
-                                            goodcolor[numpal] = c;
-                                            numpal++;
-                                  }
-                                  
+                          if (numpal<maxpal) {
+                            goodcolor[numpal] = c;
+                            numpal++;
+                          }  
                     }
-             
+                    
         }
         }
-        for (int x=0;x<20;x++) {
- goodcolor[x]=color(#998c3e,20);
- goodcolor[x]=color(#FFFFFF,50);
-  }
+          for (int x=0;x<50;x++) {
+                goodcolor[x]=#FFFFFF;
+         }
 }
-
