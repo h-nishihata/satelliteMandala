@@ -1,6 +1,6 @@
 class Layer_pen extends Layer {
 
-//------------------------------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------------------------------------
 Layer_pen(PApplet parent) {
           super(parent);
 }
@@ -16,7 +16,7 @@ void setup(){
                 float rot1 = random(-8,8);
                 float rot2 = 0.8;
                 int au = 5;
-                pens[i] = new Pen( r,cx,cy,rot1,rot2,au, (int)(random(1,500)) );
+                pens[i] = new Pen( r,cx,cy,rot1,rot2,au, (int)(random(1,700)) );
           }
 }
 

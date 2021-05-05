@@ -30,37 +30,32 @@ void setup(){
 void draw(){
 
           if(waiting_2 == 1665)sample[1].trigger();
-          //165 , 1665
           if(waiting_2 >= 1665 && waiting_3 < 10){
                     for(int j=0; j<num_p; j++){
                           sp1[j].draw();
                           sp1[j].move();
                     }
            }     
-           //190 , 1690
            if(waiting_2 >= 1690 && waiting_3 < 10){
                     for(int j=0; j<num_p; j++){
                           sp2[j].draw();
                           sp2[j].move();
                     }   
            }
-          //210 , 1710
           if(waiting_2 >= 1710 && waiting_3 < 10){
                     for(int j=0; j<num_p; j++){
                           sp3[j].draw();
                           sp3[j].move();
                     }                       
           }
-          //450 , 1950
-          if(waiting_2 >= 1950 && waiting_3 < 100){
+          if(waiting_2 >= 1950 && waiting_3 < 200){
                     for(int j=0; j<num_p; j++){
                           sp4[j].draw();
                           sp4[j].move();
                     }                       
           }
-          
-          //  reset
-          if(waiting_3 == 20){
+//  reset
+          if(waiting_3 == 200){
                     for(int j=0; j<num_p; j++){
                           sp1[j].x=width*1/3;
                           sp1[j].y=0;

@@ -1,12 +1,12 @@
 class Layer_time extends Layer {
-  
+
           float Cx, Cy;
           float R1, R2;
           float Ang1;
           float Rot1;
           int al;
           
-          int h;
+          int h,t;
           int s;
           int b;
           float a;
@@ -24,7 +24,6 @@ Layer_time(PApplet parent) {
 
 //------------------------------------------------------------------------------------------------------------------
 void setup() {
-  
           colorMode(RGB,100);
           Cx = 50 + noise(random(width))*width;
           Cy = 30 + noise(random(height))*height;
@@ -37,90 +36,127 @@ void setup() {
           noFill();
           ellipse(Cx, Cy, R1, R1);
 
-          h = 0;
-          s = 0;
-          b = 40;
-          a = 0.8;
+          h = t = 0;
+          s = 30;
+          b = 100;
+          a = 0.6;
 }
 
 //------------------------------------------------------------------------------------------------------------------
 void draw() {
-//  >> sunset[red](0,100,100) 
-          if(waiting_1 < 2000){
+// setting
+          if(waiting_1 < 10){
                 waiting_1++;
-          }else{
-                fading(h, s, b, a);
-                s =100;
-                end_1 = true;
-                changeSound(0,0);
           }
-//  sunset(0,100,100) >> night[black](0,0,0)
+          if(waiting_1 == 2){
+                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                      t=(int)random(0,60);
+                }else{
+                      t=(int)random(120,360);
+                }
+          }                
+          if(waiting_1 >= 10){
+                fading(h, s, b, a);
+                end_1 = true;
+                changeSound(0,0);   
+          }
+//  phase 1
           if(end_1 == true){
           if(waiting_2 < 2000){
                 waiting_2++;
                 if(waiting_2 >= 1300) changeSound(0,2);
-          }else{  
-                fading(h, s, b, a);
-                s=0;  
-                b=0;
-                a=5;
+          }
+          if(waiting_2 == 1900){  
+                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                      t=(int)random(0,60);
+                }else{
+                      t=(int)random(120,360);
+                }
+          }
+          if(waiting_2 >= 2000){
+                h = t;
                 end_2 = true;
-                changeSound(0,0);
+                fading(h, s, b, a);
+                changeSound(0,0);               
           }
           }
-//  night(0,0,0) >> dawn[cyan](180,100,100)
+//  phase 2
           if(end_2 == true){
           if(waiting_3 < 2000){
                 waiting_3++;
-          }else{
-                fading(h, s, b, a);   
-                h=180;
-                s=50;
-                b=80;
-                a=0.5;
-                end_3 = true;
-                changeSound(0,0);
-          } 
           }
-//  dawn(180,100,100) >> morning[yellow](60,100,100)
+          if(waiting_3 == 1900){
+                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                      t=(int)random(0,60);
+                }else{
+                      t=(int)random(120,360);
+                }
+          }                
+          if(waiting_3 >= 2000){
+                h = t;
+                end_3 = true;
+                fading(h, s, b, a);
+                changeSound(0,0);
+          }       
+          }
+//  phase 3
           if(end_3 == true){
           if(waiting_4 < 2000){
                 waiting_4++;
-          }else{
-                fading(h, s, b, a);   
-                h=60;
-                end_4 = true;
-                changeSound(0,3);
-          } 
           }
-//  morning(60,100,100) >> midday[white](0,0,100)
+          if(waiting_4 == 1900){
+                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                      t=(int)random(0,60);
+                }else{
+                      t=(int)random(120,360);
+                }
+          }                  
+          if(waiting_4 >= 2000){
+                h = t;
+                end_4 = true;
+                fading(h, s, b, a);
+                changeSound(0,3);
+          }  
+          }
+//  phase 4
           if(end_4 == true){
           if(waiting_5 < 2000){
                 waiting_5++;
-          }else{
-                fading(h, s, b, a);   
-                h=0;
-                s=0;
-                b=100;
-                a=0;
-                end_5 = true;
-                changeSound(0,2);
-          } 
           }
-//  midday >> afternoon[violet](300,100,100)
+          if(waiting_5 == 1900){
+                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                      t=(int)random(0,60);
+                }else{
+                      t=(int)random(120,360);
+                }
+          }                 
+          if(waiting_5 >= 2000){
+                h = t;
+                end_5 = true;
+                fading(h, s, b, a);
+                changeSound(0,2);
+          }
+          }
+//  phase 5
           if(end_5 == true){
           if(waiting_6 < 2000){
                 waiting_6++;
-          }else{
-                fading(h, s, b, a);   
-                h=300;
-                s=100;
-                a=0.6;
+          }
+          if(waiting_6 == 1900){
+                if(epx+epy+epz+emx+emy+emz > 0.8){  
+                      t=(int)random(0,60);
+                }else{
+                      t=(int)random(120,360);
+                }
+          }                 
+           if(waiting_6 >= 2000){
+                h = t;
                 end_6 = true;
-                changeSound(2,4);
+                fading(h, s, b, a);
+                changeSound(2,4);   
           } 
           }          
-          
+//  reset          
           if(end_6 == true){
           if(waiting_7 < 2000){
                 waiting_7++;
@@ -136,7 +172,7 @@ void draw() {
           float rx = Cx + (R1 * cos(radians(Ang1)) );
           float ry = Cy + (R1 * sin(radians(Ang1)) );
 
-          if(al > 0) al --; else al = 35;
+          if(al > 0) al --; else al = 30;
           stroke(255,255,255,al);
           strokeWeight(1);
           line(Cx, Cy, rx, ry);
